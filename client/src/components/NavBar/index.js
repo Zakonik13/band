@@ -10,11 +10,12 @@ const NavBar = () => {
           <Nav>
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#link">Merch </Nav.Link>
-            <Navbar.Brand className="navbar-title" href="#home">
-              {"  "}
-              BlueGrass Billies
-            </Navbar.Brand>
-            <Nav.Link href="#link">Newsletter</Nav.Link>
+            <div>
+              <Navbar.Brand className="navbar-title" href="#home">
+                BlueGrass Billies
+              </Navbar.Brand>
+            </div>
+            <Nav.Link href="#link">News</Nav.Link>
             <Nav.Link href="#link">Cart</Nav.Link>
           </Nav>
         </Navbar.Collapse>

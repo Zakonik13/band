@@ -27,6 +27,11 @@
   font-family: Bluegrass;
   src: url("../public/fonts/Carnevalee\ Freakshow.ttf");
 }
+
+@font-face {
+  font-family: Limo;
+  src: url("../public/fonts/Champagne\ &\ Limousines.ttf");
+}
 /* ---- */
 
 /* Navbar Styling */
@@ -43,6 +48,13 @@
 }
 
 .nav-link {
+  font-family: Limo;
+  font-size: 17px;
+}
+
+.nav-link:hover {
+  font-family: Limo;
+  font-size: 22px;
 }
 
 /* ---- */
