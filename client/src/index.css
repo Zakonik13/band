@@ -2,3 +2,47 @@
   margin: 0;
   padding: 0;
 }
+
+/* Media Queries */
+@media screen and (max-width: 995px) {
+  .navbar-title.navbar-brand {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 995px) {
+  .nav-link {
+    margin: 25px;
+    margin-top: 20px;
+  }
+}
+/* ---- */
+
+/* Colors */
+
+/* ---- */
+
+/* Fonts */
+@font-face {
+  font-family: Bluegrass;
+  src: url("../public/fonts/Carnevalee\ Freakshow.ttf");
+}
+/* ---- */
+
+/* Navbar Styling */
+.navbar-title.navbar-brand {
+  font-family: Bluegrass;
+  font-size: 50px;
+  padding-left: 10px;
+}
+
+.navbar-collapse.collapse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-link {
+}
+
+/* ---- */
