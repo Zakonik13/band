@@ -10,11 +10,13 @@ const NavBar = () => {
           <Nav>
             <Nav.Link href="/about">About</Nav.Link>
             <Nav.Link href="/merch">Merch </Nav.Link>
+            <Nav.Link href="/media">Media </Nav.Link>
             <div>
               <Navbar.Brand className="navbar-title" href="/">
                 *BlueGrass Billies*
               </Navbar.Brand>
             </div>
+            <Nav.Link href="/tour">Tour</Nav.Link>
             <Nav.Link href="/news">News</Nav.Link>
             <Nav.Link href="/cart">Cart</Nav.Link>
           </Nav>

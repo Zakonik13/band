@@ -1,5 +1,5 @@
 import React from "react"
-import hero from "../../images/band.jpg"
+import hero from "../../images/band1.jpg"
 import Page from "../../pages/Page"
 
 const Hero = () => {

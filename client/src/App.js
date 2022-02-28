@@ -6,6 +6,8 @@ import News from "./pages/News"
 import Merch from "./pages/Merch"
 import About from "./pages/About"
 import Cart from "./pages/Cart"
+import Tour from "./pages/Tour"
+import Media from "./pages/Media"
 
 // Components
 import Home from "./pages/Home"
@@ -20,6 +22,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/merch" element={<Merch />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/media" element={<Media />} />
+        <Route path="/tour" element={<Tour />} />
       </Routes>
       <Footer />
     </Router>
