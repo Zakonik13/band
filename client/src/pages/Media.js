@@ -7,7 +7,7 @@ import band4 from "../images/band4.jpg"
 
 const Media = () => {
   return (
-    <Page title={"Merch"}>
+    <Page title={"Media"}>
       <div style={{ display: "flex", justifyContent: "center", fontSize: 35, fontFamily: "Limo" }}>
         <div>Media</div>
       </div>

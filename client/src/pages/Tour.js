@@ -9,7 +9,6 @@ const Tour = () => {
       </div>
       <hr />
       <div className="p-5">
-        <h1 style={{ display: "flex", justifyContent: "center", fontSize: 35 }}>Tour Dates 2022</h1>
         <ul className="tour-list text-center" style={{ listStyleType: "none" }}>
           <li>January</li>
           <li>February</li>
