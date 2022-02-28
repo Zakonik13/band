@@ -27,6 +27,11 @@
   font-family: Bluegrass;
   src: url("../public/fonts/Carnevalee\ Freakshow.ttf");
 }
+
+@font-face {
+  font-family: Limo;
+  src: url("../public/fonts/Champagne\ &\ Limousines.ttf");
+}
 /* ---- */
 
 /* Navbar Styling */
@@ -43,6 +48,39 @@
 }
 
 .nav-link {
+  font-family: Limo;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.nav-link:hover {
+  margin-bottom: 15px;
+  font-family: Limo;
+  font-size: 22px;
+}
+
+/* ---- */
+
+/* Hero Styling */
+
+/* .image-header {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+/* ---- */
+
+/* Footer Styling */
+.footer-text {
+  font-family: Limo;
+  font-size: 18px;
+  color: rgb(96, 96, 96);
+}
+
+.footer-content {
+  /* background-color: rgb(211, 188, 12); */
 }
 
 /* ---- */
