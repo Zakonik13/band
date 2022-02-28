@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="pb-2">
           <SocialIcon className="social m-1" url="https://www.linkedin.com/in/alexlehr" />
           <SocialIcon className="social m-1" url="https://www.facebook.com/alex.lehr.75" />
-          <SocialIcon className="social m-1" url="https://github.com/alehr45" />
+          <SocialIcon className="social m-1" url="https://instagram.com/alehr45/" />
         </div>
         <small>
           <p className="m-0">

@@ -3,10 +3,11 @@ import Page from "./Page"
 
 const Cart = () => {
   return (
-    <Page title={"News"}>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+    <Page title={"Cart"}>
+      <div style={{ display: "flex", justifyContent: "center", fontSize: 35, fontFamily: "Limo" }}>
         <div>Cart</div>
       </div>
+      <hr />
     </Page>
   )
 }
