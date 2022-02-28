@@ -1,6 +1,6 @@
-import React from "react"
-import hero from "../../images/band1.jpg"
-import Page from "../../pages/Page"
+import React from "react";
+import hero from "../images/band1.jpg";
+import Page from "./Page";
 
 const Hero = () => {
   return (
@@ -10,7 +10,7 @@ const Hero = () => {
         <div className="image-header mb-4"></div>
       </div>
     </Page>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

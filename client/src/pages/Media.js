@@ -1,14 +1,23 @@
-import React from "react"
-import Page from "./Page"
-import { Row } from "react-bootstrap"
-import band2 from "../images/band2.jpeg"
-import band3 from "../images/band3.jpg"
-import band4 from "../images/band4.jpg"
+import React from "react";
+import { Row } from "react-bootstrap";
+// Images
+import band2 from "../images/band2.jpeg";
+import band3 from "../images/band3.jpg";
+import band4 from "../images/band4.jpg";
+// Components
+import Page from "../components/Page";
 
 const Media = () => {
   return (
-    <Page title={"Merch"}>
-      <div style={{ display: "flex", justifyContent: "center", fontSize: 35, fontFamily: "Limo" }}>
+    <Page title={"Media"}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          fontSize: 35,
+          fontFamily: "Limo",
+        }}
+      >
         <div>Media</div>
       </div>
       <hr />
@@ -21,7 +30,7 @@ const Media = () => {
         </Row>
       </div>
     </Page>
-  )
-}
+  );
+};
 
-export default Media
+export default Media;

@@ -3,24 +3,7 @@
   padding: 0;
 }
 
-/* Media Queries */
-@media screen and (max-width: 995px) {
-  .navbar-title.navbar-brand {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 995px) {
-  .nav-link {
-    margin: 25px;
-    margin-top: 20px;
-  }
-}
-/* ---- */
-
 /* Colors */
-
-/* ---- */
 
 /* Fonts */
 @font-face {
@@ -32,7 +15,6 @@
   font-family: Limo;
   src: url("../public/fonts/Champagne\ &\ Limousines.ttf");
 }
-/* ---- */
 
 /* Navbar Styling */
 .navbar-title.navbar-brand {
@@ -59,8 +41,6 @@
   font-size: 22px;
 }
 
-/* ---- */
-
 /* Hero Styling */
 
 /* .image-header {
@@ -69,8 +49,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
 } */
-
-/* ---- */
 
 /* Footer Styling */
 .footer-text {
@@ -83,4 +61,16 @@
   /* background-color: rgb(211, 188, 12); */
 }
 
-/* ---- */
+/* Media Queries */
+@media screen and (max-width: 995px) {
+  .navbar-title.navbar-brand {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 995px) {
+  .nav-link {
+    margin: 25px;
+    margin-top: 20px;
+  }
+}

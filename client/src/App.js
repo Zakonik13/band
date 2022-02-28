@@ -1,16 +1,15 @@
-import React from "react"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import NavBar from "./components/NavBar"
-import Footer from "./components/Footer"
-import News from "./pages/News"
-import Merch from "./pages/Merch"
-import About from "./pages/About"
-import Cart from "./pages/Cart"
-import Tour from "./pages/Tour"
-import Media from "./pages/Media"
-
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // Components
-import Home from "./pages/Home"
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import News from "./pages/News";
+import Merch from "./pages/Merch";
+import About from "./pages/About";
+import Cart from "./pages/Cart";
+import Tour from "./pages/Tour";
+import Media from "./pages/Media";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -27,7 +26,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
