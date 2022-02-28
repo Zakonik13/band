@@ -61,6 +61,30 @@
   /* background-color: rgb(211, 188, 12); */
 }
 
+/* Admin */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30vw;
+}
+
+.form-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 500px;
+  background-color: rgba(203, 216, 236, 0.712);
+  border-radius: 5px;
+}
+
 /* Media Queries */
 @media screen and (max-width: 995px) {
   .navbar-title.navbar-brand {

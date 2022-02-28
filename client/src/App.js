@@ -10,6 +10,8 @@ import Cart from "./pages/Cart";
 import Tour from "./pages/Tour";
 import Media from "./pages/Media";
 import Home from "./pages/Home";
+import AdminSignup from "./pages/AdminSignup";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/media" element={<Media />} />
         <Route path="/tour" element={<Tour />} />
+        <Route path="/create-new-admin-user" element={<AdminSignup />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       <Footer />
     </Router>
