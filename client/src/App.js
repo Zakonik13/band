@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { StoreProvider } from "./utils/GlobalState";
 // Components
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -16,19 +17,21 @@ import Admin from "./pages/Admin";
 function App() {
   return (
     <Router>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/merch" element={<Merch />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/media" element={<Media />} />
-        <Route path="/tour" element={<Tour />} />
-        <Route path="/create-new-admin-user" element={<AdminSignup />} />
-        <Route path="/admin" element={<Admin />} />
-      </Routes>
-      <Footer />
+      <StoreProvider>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/merch" element={<Merch />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/media" element={<Media />} />
+          <Route path="/tour" element={<Tour />} />
+          <Route path="/create-new-admin-user" element={<AdminSignup />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+        <Footer />
+      </StoreProvider>
     </Router>
   );
 }
