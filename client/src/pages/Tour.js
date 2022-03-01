@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 // Components
-import Page from "../components/Page";
+import Page from "../components/Page"
 
 const Tour = () => {
   return (
@@ -10,16 +10,14 @@ const Tour = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo",
+          fontFamily: "Limo"
         }}
       >
         <div>Tour</div>
       </div>
       <hr />
       <div className="p-5">
-        <h1 style={{ display: "flex", justifyContent: "center", fontSize: 35 }}>
-          Tour Dates 2022
-        </h1>
+        <h1 style={{ display: "flex", justifyContent: "center", fontSize: 35 }}>Tour Dates 2022</h1>
         <ul className="tour-list text-center" style={{ listStyleType: "none" }}>
           <li>January</li>
           <li>February</li>
@@ -37,7 +35,7 @@ const Tour = () => {
       </div>
       <hr />
     </Page>
-  );
-};
+  )
+}
 
-export default Tour;
+export default Tour
