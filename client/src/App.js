@@ -11,6 +11,9 @@ import Cart from "./pages/Cart";
 import Tour from "./pages/Tour";
 import Media from "./pages/Media";
 import Home from "./pages/Home";
+import Images from "./pages/Images";
+import Music from "./pages/Music";
+import Videos from "./pages/Videos";
 import AdminSignup from "./pages/AdminSignup";
 import Admin from "./pages/Admin";
 
@@ -19,21 +22,24 @@ function App() {
     <Router>
       <StoreProvider>
         <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/merch" element={<Merch />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/media" element={<Media />} />
-          <Route path="/tour" element={<Tour />} />
-          <Route path="/create-new-admin-user" element={<AdminSignup />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/merch" element={<Merch />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/media" element={<Media />} />
+            <Route path="/tour" element={<Tour />} />
+            <Route path="/images" element={<Images />} />
+            <Route path="/music" element={<Music />} />
+            <Route path="/videos" element={<Videos />} />
+            <Route path="/create-new-admin-user" element={<AdminSignup />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
         <Footer />
       </StoreProvider>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

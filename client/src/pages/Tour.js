@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { UPDATE_TOUR } from "../utils/actions";
 import { useStoreContext } from "../utils/GlobalState";
 // Components
-import Page from "../components/Page";
+import Page from "../components/Page"
 
 const Tour = () => {
   const [state, dispatch] = useStoreContext();
@@ -45,16 +45,14 @@ const Tour = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo",
+          fontFamily: "Limo"
         }}
       >
         <div>Tour</div>
       </div>
       <hr />
       <div className="p-5">
-        <h1 style={{ display: "flex", justifyContent: "center", fontSize: 35 }}>
-          Tour Dates 2022
-        </h1>
+        <h1 style={{ display: "flex", justifyContent: "center", fontSize: 35 }}>Tour Dates 2022</h1>
         <ul className="tour-list text-center" style={{ listStyleType: "none" }}>
           <li>January</li>
           <li>February</li>
@@ -72,7 +70,7 @@ const Tour = () => {
       </div>
       <hr />
     </Page>
-  );
-};
+  )
+}
 
-export default Tour;
+export default Tour

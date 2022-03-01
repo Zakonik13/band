@@ -42,13 +42,36 @@
 }
 
 /* Hero Styling */
-
+/* This is for a banner on hero */
 /* .image-header {
   position: absolute;
   top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
 } */
+
+/* Media Page Styling */
+.media-link {
+  padding: 15px;
+  opacity: 80%;
+}
+
+.media-link:hover {
+  opacity: 100%;
+}
+
+.go-back {
+  padding-left: 30px;
+}
+
+/* Merch Page Styling */
+.merch-link {
+  opacity: 80%;
+}
+
+.merch-link:hover {
+  opacity: 100%;
+}
 
 /* Footer Styling */
 .footer-text {
