@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks"
 import ApolloClient from "apollo-boost"
-=======
 import { StoreProvider } from "./utils/GlobalState";
 
 // Components
