@@ -17,8 +17,8 @@ const Videos = () => {
       </h2>
       <hr />
       <div className="go-back">
-        <Button className="" variant="secondary" href="/media" size="sm">
-          Go Back
+        <Button href="/media" size="sm">
+          Back to Media
         </Button>
       </div>
     </div>
