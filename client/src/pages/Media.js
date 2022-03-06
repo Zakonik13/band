@@ -1,11 +1,12 @@
-import React from "react";
-import { Row } from "react-bootstrap";
+import React from "react"
+import { Col } from "react-bootstrap"
+// import ImageGallery from "react-image-gallery"
 // Images
-import band2 from "../images/band2.jpeg";
-import band3 from "../images/band3.jpg";
-import band4 from "../images/band4.jpg";
+import music from "../images/music.png"
+import photos from "../images/photo.svg"
+import videos from "../images/video.svg"
 // Components
-import Page from "../components/Page";
+import Page from "../components/Page"
 
 const Media = () => {
   return (
@@ -15,22 +16,37 @@ const Media = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo",
+          fontFamily: "Limo"
         }}
       >
-        <div>Media</div>
+        <div style={{ paddingLeft: "30px" }}>Media</div>
       </div>
       <hr />
-      <div>
-        <Row style={{ display: "flex", justifyContent: "center" }}>
-          <img style={{ height: "200px", width: "auto" }} src={band2} alt="" />
 
-          <img style={{ height: "200px", width: "auto" }} src={band3} alt="" />
-          <img style={{ height: "200px", width: "auto" }} src={band4} alt="" />
-        </Row>
-      </div>
+      <Col style={{ display: "flex", justifyContent: "center" }}>
+        <a style={{ textDecoration: "none" }} href="/images">
+          <h3 style={{ fontFamily: "Limo", fontSize: 20 }} className="text-center text-muted">
+            Images
+          </h3>
+          <img className="media-link" style={{ height: "300px", width: "auto" }} src={photos} alt="" />
+        </a>
+        <a style={{ textDecoration: "none" }} href="/music">
+          <h3 style={{ fontFamily: "Limo", fontSize: 20 }} className="text-center text-muted">
+            Music
+          </h3>
+          <img className="media-link" style={{ height: "300px", width: "auto", fontFamily: "Limo" }} src={music} alt="" />
+        </a>
+        <a style={{ textDecoration: "none" }} href="/videos">
+          <h3 style={{ fontFamily: "Limo", fontSize: 20 }} className="text-center text-muted">
+            Videos
+          </h3>
+          <img className="media-link" style={{ height: "300px", width: "auto" }} src={videos} alt="" />
+        </a>
+      </Col>
+
+      <hr />
     </Page>
-  );
-};
+  )
+}
 
-export default Media;
+export default Media

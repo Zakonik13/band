@@ -3,6 +3,9 @@
   padding: 0;
 }
 
+/* React-Image-Gallery Import */
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
 /* Colors */
 
 /* Fonts */
@@ -42,13 +45,34 @@
 }
 
 /* Hero Styling */
-
+/* This is for a banner on hero */
 /* .image-header {
   position: absolute;
   top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
 } */
+
+/* Media Page Styling */
+.media-link {
+  padding: 15px;
+  opacity: 80%;
+}
+
+.media-link:hover {
+  opacity: 100%;
+}
+
+/* Images Page Styling */
+
+/* Merch Page Styling */
+.merch-link {
+  opacity: 80%;
+}
+
+.merch-link:hover {
+  opacity: 100%;
+}
 
 /* Footer Styling */
 .footer-text {
@@ -86,15 +110,28 @@
 }
 
 /* Media Queries */
+
+/* Screen size minimizes and navbar collapses */
 @media screen and (max-width: 995px) {
   .navbar-title.navbar-brand {
     display: none;
   }
+  .home-title {
+    margin: 40px;
+    font-family: Bluegrass;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+  }
 }
 
+/* Screen size maximizes and navbar expands */
 @media screen and (min-width: 995px) {
   .nav-link {
     margin: 25px;
     margin-top: 20px;
+  }
+  .home-title {
+    display: none;
   }
 }
