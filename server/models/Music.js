@@ -2,7 +2,10 @@ const { Schema, model } = require('mongoose')
 const mongoose = require("mongoose");
 
 const MusicSchema =  new Schema ({
-    // Song Title
+    title: {
+        type: String,
+        required: true,
+    }
 
     // Album Name
     // Source
