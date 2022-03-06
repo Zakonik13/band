@@ -19,6 +19,13 @@ type Tour {
     link: String
 }
 
+type Music {
+    _id: ID!
+    title: String!
+    album: String!
+    source: String!
+}
+
 type Auth {
     token: ID!
     admin: Admin

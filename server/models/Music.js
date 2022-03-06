@@ -5,10 +5,15 @@ const MusicSchema =  new Schema ({
     title: {
         type: String,
         required: true,
+    },
+    Album: {
+        type: String,
+        required: true
+    },
+    Source: {
+        type: String,
+        required: true
     }
-
-    // Album Name
-    // Source
 })
 
 const Music = mongoose.model("Music", MusicSchema);
