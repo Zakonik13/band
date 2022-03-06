@@ -6,7 +6,7 @@ import Page from "../components/Page"
 
 const Tour = () => {
   const [state, dispatch] = useStoreContext()
-  // const { tours } = state;
+  const { tours } = state;
   const tourData = [
     {
       Month: "January",
@@ -36,7 +36,7 @@ const Tour = () => {
         tours: tourData
       })
     }
-  })
+  }, [dispatch])
 
   return (
     <Page title={"Tour"}>
