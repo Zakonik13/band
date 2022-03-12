@@ -16,7 +16,8 @@ const Media = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo"
+          fontFamily: "Limo",
+          paddingRight: 30
         }}
       >
         <div style={{ paddingLeft: "30px" }}>Media</div>

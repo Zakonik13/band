@@ -5,8 +5,7 @@ import { useStoreContext } from "../utils/GlobalState"
 import Page from "../components/Page"
 
 const Tour = () => {
-  const [state, dispatch] = useStoreContext()
-  // const { tours } = state;
+  const [dispatch] = useStoreContext()
   const tourData = [
     {
       Month: "January",
@@ -25,8 +24,6 @@ const Tour = () => {
     }
   ]
 
-  console.log(state.tours)
-
   useEffect(() => {
     //if data exist or has changed from the response of useQuery (not currently used), then run dispatch()
     if (tourData) {
@@ -36,7 +33,7 @@ const Tour = () => {
         tours: tourData
       })
     }
-  })
+  }, [dispatch])
 
   return (
     <Page title={"Tour"}>

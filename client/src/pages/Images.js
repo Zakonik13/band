@@ -1,6 +1,7 @@
 import React from "react"
-import { Button } from "react-bootstrap"
 import ImageGallery from "react-image-gallery"
+//Components
+import BackButton from "../components/BackButton"
 //Images
 import band1 from "../images/band1.jpg"
 import band2 from "../images/band2.jpg"
@@ -40,10 +41,8 @@ const Images = () => {
         Images
       </h2>
       <hr />
-      <div>
-        <Button className="back-button" href="/media" size="sm">
-          Back to Media
-        </Button>
+      <div className="p-4">
+        <BackButton />
       </div>
 
       <div className="image-container">

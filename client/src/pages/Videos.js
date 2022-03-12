@@ -1,5 +1,5 @@
 import React from "react"
-import { Button } from "react-bootstrap"
+import BackButton from "../components/BackButton"
 
 const Videos = () => {
   return (
@@ -16,10 +16,25 @@ const Videos = () => {
         Videos
       </h2>
       <hr />
-      <div className="go-back">
-        <Button href="/media" size="sm">
-          Back to Media
-        </Button>
+      <BackButton />
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "50px"
+        }}
+      >
+        <iframe width="800" height="600" src="https://www.youtube.com/embed/55XvlFFJBH4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "50px"
+        }}
+      >
+        <iframe width="800" height="600" src="https://www.youtube.com/embed/1c4OOYp-5ic" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   )

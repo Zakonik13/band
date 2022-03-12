@@ -1,5 +1,7 @@
 import React from "react"
-import { Button, Col, Row } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap"
+import { SocialIcon } from "react-social-icons"
+import BackButton from "../components/BackButton"
 //Songs
 import song1 from "../music/arizona.mp3"
 import song2 from "../music/appalachian coal mines.mp3"
@@ -11,6 +13,8 @@ import song7 from "../music/matelot.mp3"
 import song8 from "../music/what i found.mp3"
 import song9 from "../music/help you.mp3"
 import song10 from "../music/racing like the wind.mp3"
+//Icons
+import apple from "../images/apple-icon.png"
 
 const Music = () => {
   const songs = [
@@ -32,23 +36,29 @@ const Music = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          fontSize: 35,
+          fontSize: 45,
           fontFamily: "Limo",
           paddingTop: "40px"
         }}
       >
         Music
       </h2>
+
       <hr />
-      <Button className="" href="/media" size="sm">
-        Back to Media
-      </Button>
+
+      <div
+        style={{
+          padding: "20px"
+        }}
+      >
+        <BackButton />
+      </div>
       <h1
         style={{
           display: "flex",
           fontFamily: "Limo",
           justifyContent: "center",
-          fontSize: 40,
+          fontSize: 30,
           paddingBottom: 30
         }}
       >
@@ -58,31 +68,65 @@ const Music = () => {
         <Row>
           {songs.map(songs => {
             return (
-              <div key={songs.name} className="pb-5">
-                <h6
-                  style={{
-                    display: "flex",
-                    justifyContent: "center"
-                  }}
-                >
-                  {songs.trackNumber}. {songs.title}
-                </h6>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center"
-                  }}
-                >
-                  {console.log(songs.source)}
-                  <audio controls>
-                    <source src={songs.source} type="audio/mpeg" />
-                  </audio>
-                </div>
+              <div>
+                {songs.trackNumber === 2 ? (
+                  <div key={songs.trackNumber} className="pb-5">
+                    <h6
+                      style={{
+                        display: "flex",
+                        justifyContent: "center"
+                      }}
+                    >
+                      {songs.trackNumber}. {songs.title}
+                    </h6>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center"
+                      }}
+                    >
+                      <audio className="media-player" controls>
+                        <source src={songs.source} type="audio/mpeg" />
+                      </audio>
+                    </div>
+                  </div>
+                ) : (
+                  <div key={songs.trackNumber} className="pb-5">
+                    <h6
+                      style={{
+                        display: "flex",
+                        justifyContent: "center"
+                      }}
+                    >
+                      {songs.trackNumber}. {songs.title}
+                    </h6>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center"
+                      }}
+                    >
+                      <a className="spotify-link" href="https://open.spotify.com/track/2jWuNKBlgkfb3M0WDKexY8">
+                        <SocialIcon url="https://open.spotify.com/track/2jWuNKBlgkfb3M0WDKexY8" />
+                        <img
+                          style={{
+                            height: "50px",
+                            paddingLeft: "10px"
+                          }}
+                          src={apple}
+                          alt="apple-icon"
+                          url="https://music.apple.com/us/album/big-country/358187446?i=358187488"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                )}
               </div>
             )
           })}
         </Row>
       </Col>
+
       <hr />
     </div>
   )
