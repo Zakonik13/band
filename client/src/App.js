@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 import React from "react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { StoreProvider } from "./utils/GlobalState"
+=======
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ApolloProvider } from "@apollo/react-hooks"
+import ApolloClient from "apollo-boost"
+import { StoreProvider } from "./utils/GlobalState";
+
+>>>>>>> 255cac6df44b19f9e3dbb0cee49a988e010ebb1d
 // Components
 import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
@@ -18,10 +27,24 @@ import AdminSignup from "./pages/AdminSignup"
 import Admin from "./pages/Admin"
 import MerchDetails from "./pages/MerchDetails"
 
+const client = new ApolloClient({
+  request: operation => {
+    const token = localStorage.getItem("id_token")
+
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ""
+      }
+    })
+  },
+  uri: "/graphql"
+})
+
 function App() {
   return (
-    <Router>
-      <StoreProvider>
+    <ApolloProvider client={client}>
+      <Router>
+        <StoreProvider>
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -40,8 +63,9 @@ function App() {
         </Routes>
         <Footer />
       </StoreProvider>
-    </Router>
-  )
+      </Router>
+    </ApolloProvider>
+  );
 }
 
 export default App

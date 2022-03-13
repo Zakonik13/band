@@ -11,6 +11,14 @@ type Admin {
     password: String!
 }
 
+type Tour {
+    _id: ID!
+    date: String!
+    city: String!
+    venue: String!
+    link: String
+}
+
 type Auth {
     token: ID!
     admin: Admin

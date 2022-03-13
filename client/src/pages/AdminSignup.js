@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Row } from "react-bootstrap";
-// import Auth from "../utils/Auth";
-// import { useMutation } from "@apollo/client";
-// import { ADD_ADMIN } from "../utils/mutations";
+import Auth from "../utils/Auth";
+import { useMutation } from "@apollo/react-hooks";
+import { ADD_ADMIN } from "../utils/mutations";
 
 // Components
 import Page from "../components/Page";
@@ -12,7 +12,7 @@ const AdminSignup = () => {
     email: "",
     password: "",
   });
-  // const [addAdmin, { error }] = useMutation(ADD_ADMIN);
+  const [addAdmin, { error }] = useMutation(ADD_ADMIN);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -22,12 +22,12 @@ const AdminSignup = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // try {
-    //   const { data } = await addAdmin({ variables: { ...formState } });
-    //   Auth.login(data.addAdmin.token);
-    // } catch (e) {
-    //   console.error(e);
-    // }
+    try {
+      const { data } = await addAdmin({ variables: { ...formState } });
+      Auth.login(data.addAdmin.token);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -60,7 +60,7 @@ const AdminSignup = () => {
             <Row>
               <Button type="submit">Signup</Button>
             </Row>
-            {/* {error && <div>Sign up failed</div>} */}
+            {error && <div>Sign up failed</div>}
           </div>
         </form>
       </div>
