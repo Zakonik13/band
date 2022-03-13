@@ -1,6 +1,6 @@
 import React from "react"
 import { Row, Col } from "react-bootstrap"
-import { SocialIcon } from "react-social-icons"
+
 //Components
 import Page from "../components/Page"
 import BackButton from "../components/BackButton"

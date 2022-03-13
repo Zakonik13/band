@@ -1,5 +1,4 @@
 import React from "react"
-import ImageGallery from "react-image-gallery"
 //Components
 import Page from "../components/Page"
 import BackButton from "../components/BackButton"

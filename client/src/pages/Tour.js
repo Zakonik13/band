@@ -1,44 +1,12 @@
 import React, { useEffect } from "react"
-// import { UPDATE_TOUR } from "../utils/actions"
-// import { useStoreContext } from "../utils/GlobalState"
+import { UPDATE_TOUR } from "../utils/actions"
+import { useStoreContext } from "../utils/GlobalState"
 // Components
 import Page from "../components/Page"
-import BackButton from "../components/BackButton"
 
 const Tour = () => {
-<<<<<<< HEAD
-  // const [dispatch] = useStoreContext()
-  // const tourData = [
-  //   {
-  //     Month: "January",
-  //     Date: "January 1st",
-  //     Location: "Lexington, Ky"
-  //   },
-  //   {
-  //     Month: "January",
-  //     Date: "January 7th",
-  //     Location: "Louisville, Ky"
-  //   },
-  //   {
-  //     Month: "January",
-  //     Date: "January 14th",
-  //     Location: "Nashville, Tn"
-  //   }
-  // ]
-
-  // useEffect(() => {
-  //   //if data exist or has changed from the response of useQuery (not currently used), then run dispatch()
-  //   if (tourData) {
-  //     // execute our dispatch function with our action object indicating the type of action and the data to set our state for tours to
-  //     dispatch({
-  //       type: UPDATE_TOUR,
-  //       tours: tourData
-  //     })
-  //   }
-  // }, [dispatch])
-=======
   const [state, dispatch] = useStoreContext()
-  const { tours } = state;
+  const { tours } = state
   const tourData = [
     {
       Month: "January",
@@ -69,7 +37,6 @@ const Tour = () => {
       })
     }
   }, [dispatch])
->>>>>>> 255cac6df44b19f9e3dbb0cee49a988e010ebb1d
 
   return (
     <Page title={"Tour"}>

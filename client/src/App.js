@@ -1,15 +1,9 @@
-<<<<<<< HEAD
 import React from "react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { StoreProvider } from "./utils/GlobalState"
-=======
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks"
 import ApolloClient from "apollo-boost"
-import { StoreProvider } from "./utils/GlobalState";
+import { StoreProvider } from "./utils/GlobalState"
 
->>>>>>> 255cac6df44b19f9e3dbb0cee49a988e010ebb1d
 // Components
 import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
@@ -45,27 +39,27 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <StoreProvider>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/merch" element={<Merch />} />
-          <Route path="/merchdetails" element={<MerchDetails />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/media" element={<Media />} />
-          <Route path="/tour" element={<Tour />} />
-          <Route path="/images" element={<Images />} />
-          <Route path="/music" element={<Music />} />
-          <Route path="/videos" element={<Videos />} />
-          <Route path="/create-new-admin-user" element={<AdminSignup />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-        <Footer />
-      </StoreProvider>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/merch" element={<Merch />} />
+            <Route path="/merchdetails" element={<MerchDetails />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/media" element={<Media />} />
+            <Route path="/tour" element={<Tour />} />
+            <Route path="/images" element={<Images />} />
+            <Route path="/music" element={<Music />} />
+            <Route path="/videos" element={<Videos />} />
+            <Route path="/create-new-admin-user" element={<AdminSignup />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+          <Footer />
+        </StoreProvider>
       </Router>
     </ApolloProvider>
-  );
+  )
 }
 
 export default App
