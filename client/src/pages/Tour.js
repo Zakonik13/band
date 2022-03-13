@@ -1,39 +1,40 @@
 import React, { useEffect } from "react"
-import { UPDATE_TOUR } from "../utils/actions"
-import { useStoreContext } from "../utils/GlobalState"
+// import { UPDATE_TOUR } from "../utils/actions"
+// import { useStoreContext } from "../utils/GlobalState"
 // Components
 import Page from "../components/Page"
+import BackButton from "../components/BackButton"
 
 const Tour = () => {
-  const [dispatch] = useStoreContext()
-  const tourData = [
-    {
-      Month: "January",
-      Date: "January 1st",
-      Location: "Lexington, Ky"
-    },
-    {
-      Month: "January",
-      Date: "January 7th",
-      Location: "Louisville, Ky"
-    },
-    {
-      Month: "January",
-      Date: "January 14th",
-      Location: "Nashville, Tn"
-    }
-  ]
+  // const [dispatch] = useStoreContext()
+  // const tourData = [
+  //   {
+  //     Month: "January",
+  //     Date: "January 1st",
+  //     Location: "Lexington, Ky"
+  //   },
+  //   {
+  //     Month: "January",
+  //     Date: "January 7th",
+  //     Location: "Louisville, Ky"
+  //   },
+  //   {
+  //     Month: "January",
+  //     Date: "January 14th",
+  //     Location: "Nashville, Tn"
+  //   }
+  // ]
 
-  useEffect(() => {
-    //if data exist or has changed from the response of useQuery (not currently used), then run dispatch()
-    if (tourData) {
-      // execute our dispatch function with our action object indicating the type of action and the data to set our state for tours to
-      dispatch({
-        type: UPDATE_TOUR,
-        tours: tourData
-      })
-    }
-  }, [dispatch])
+  // useEffect(() => {
+  //   //if data exist or has changed from the response of useQuery (not currently used), then run dispatch()
+  //   if (tourData) {
+  //     // execute our dispatch function with our action object indicating the type of action and the data to set our state for tours to
+  //     dispatch({
+  //       type: UPDATE_TOUR,
+  //       tours: tourData
+  //     })
+  //   }
+  // }, [dispatch])
 
   return (
     <Page title={"Tour"}>
@@ -48,6 +49,7 @@ const Tour = () => {
         <div>Tour</div>
       </div>
       <hr />
+
       <div className="p-5">
         <h1 style={{ display: "flex", justifyContent: "center", fontSize: 35 }}>Tour Dates 2022</h1>
         <ul className="tour-list text-center" style={{ listStyleType: "none" }}>

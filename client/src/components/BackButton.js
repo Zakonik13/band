@@ -12,7 +12,8 @@ const BackButton = () => {
             alt="back-button"
             style={{
               height: "30px",
-              marginLeft: "30px"
+              marginLeft: "30px",
+              paddingBottom: "10px"
             }}
             src={back}
           ></img>

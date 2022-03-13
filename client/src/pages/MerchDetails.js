@@ -8,7 +8,7 @@ import hat from "../images/hat.jpg"
 const MerchDetails = () => {
   return (
     <>
-      <div className="p-4">
+      <div className="p-2">
         <BackButton />
       </div>
       <h1

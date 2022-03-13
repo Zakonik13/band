@@ -74,6 +74,10 @@
 }
 
 /* Images Page Styling */
+.image-container {
+  padding-left: 50px;
+  padding-right: 50px;
+}
 
 /* Merch Page Styling */
 .merch-link {
