@@ -20,3 +20,11 @@ export const LOGIN_ADMIN = gql`
     }
   }
   `
+
+  export const ADD_MUSIC = gql`mutation AddMusic($title: String!, $source: String!) {
+    addMusic(title: $title, source: $source) {
+      title
+      source
+    }
+  }
+  `

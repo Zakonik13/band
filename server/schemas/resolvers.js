@@ -1,11 +1,19 @@
 const { signToken } = require("../utils/auth")
 const { Admin } = require("../models")
+const { Music } = require("../models")
+const { Merch } = require("../models")
 
 const resolvers = {
     Query: {
         admins: async () => {
             return Admin.find()
         },
+        music: async () => {
+            return Music.find()
+        },
+        merch: async () => {
+            return Merch.find()
+        }
     },
     Mutation: {
         addAdmin: async (parent, args) => {
@@ -32,6 +40,16 @@ const resolvers = {
             const token = signToken(admin)
             return { token, admin }
         },
+        addMusic: async (parent, args) => {
+            const music = await Music.create(args)
+
+            return music;
+        },
+        addMerch: async (parent, args) => {
+            const merch = await Merch.create(args)
+
+            return merch;
+        }
     }
 }
 

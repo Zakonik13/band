@@ -25,8 +25,6 @@ const Tour = () => {
     }
   ]
 
-  console.log(state.tours)
-
   useEffect(() => {
     //if data exist or has changed from the response of useQuery (not currently used), then run dispatch()
     if (tourData) {

@@ -6,11 +6,7 @@ const MusicSchema =  new Schema ({
         type: String,
         required: true,
     },
-    Album: {
-        type: String,
-        required: true
-    },
-    Source: {
+    source: {
         type: String,
         required: true
     }
