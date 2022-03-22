@@ -21,10 +21,32 @@ export const LOGIN_ADMIN = gql`
   }
   `
 
-  export const ADD_MUSIC = gql`mutation AddMusic($title: String!, $source: String!) {
+export const ADD_MUSIC = gql`
+    mutation AddMusic($title: String!, $source: String!) {
     addMusic(title: $title, source: $source) {
       title
       source
     }
   }
   `
+
+export const ADD_MERCH = gql`
+    mutation AddMerch($name: String!, $description: String!, $quantity: Int!, $price: Float!) {
+    addMerch(name: $name, description: $description, quantity: $quantity, price: $price) {
+      _id
+      name 
+      description
+      price
+      quantity
+    }
+  }`
+
+export const UPDATE_MERCH = gql`
+    mutation UpdateMerch($id: ID!, $name: String!, $description: String!, $quantity: Int!, $price: Float!) {
+    updateMerch(_id: $id, name: $name, description: $description, quantity: $quantity, price: $price) {
+      _id
+      description
+      price
+      name
+    }
+  }`

@@ -49,7 +49,21 @@ const resolvers = {
             const merch = await Merch.create(args)
 
             return merch;
-        }
+        },
+        updateMerch: async (parent, {_id, name, description, price, quantity}) => {
+            const merch = await Merch.findOneAndUpdate(
+                {_id },
+                {
+                    name: name,
+                    description: description,
+                    quantity: quantity,
+                    price: price
+                },
+                {new: true}
+            )
+
+            return merch;
+        },
     }
 }
 

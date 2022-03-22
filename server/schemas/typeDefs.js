@@ -22,7 +22,7 @@ type Music {
 type Merch {
     _id: ID
     name: String!
-    descritption: String!
+    description: String!
     quantity: Int
     price: Float
 }
@@ -45,6 +45,7 @@ type Mutation {
     login(email: String!, password: String!): Auth
     addMusic(title: String!, source: String!): Music
     addMerch(name: String!, description: String!, quantity: Int!, price: Float!): Merch
+    updateMerch(_id: ID!, name: String!, description: String!, quantity: Int!, price: Float!): Merch
 }
 `
 
