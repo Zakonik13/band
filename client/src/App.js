@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ApolloProvider } from "@apollo/react-hooks"
-import ApolloClient from "apollo-boost"
-=======
+import { ApolloProvider } from "@apollo/react-hooks";
+import ApolloClient from "apollo-boost";
 import { StoreProvider } from "./utils/GlobalState";
 
 // Components
@@ -22,42 +21,24 @@ import AdminSignup from "./pages/AdminSignup";
 import Admin from "./pages/Admin";
 
 const client = new ApolloClient({
-  request: operation => {
-    const token = localStorage.getItem("id_token")
+  request: (operation) => {
+    const token = localStorage.getItem("id_token");
 
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : ""
-      }
-    })
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    });
   },
-  uri: "/graphql"
-})
+  uri: "/graphql",
+});
 
 function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/merch" element={<Merch />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/media" element={<Media />} />
-          <Route path="/tour" element={<Tour />} />
-          <Route path="/create-new-admin-user" element={<AdminSignup />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-        <Footer />
-      </Router>
-
-    </ApolloProvider>
-  );
-    <Router>
-      <StoreProvider>
-        <NavBar />
+        <StoreProvider>
+          <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/news" element={<News />} />
@@ -72,10 +53,11 @@ function App() {
             <Route path="/create-new-admin-user" element={<AdminSignup />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
-        <Footer />
-      </StoreProvider>
-    </Router>
-  )
+          <Footer />
+        </StoreProvider>
+      </Router>
+    </ApolloProvider>
+  );
 }
 
-export default App
+export default App;
