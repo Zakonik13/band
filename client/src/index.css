@@ -3,6 +3,9 @@
   padding: 0;
 }
 
+/* React-Image-Gallery Import */
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
 /* Colors */
 
 /* Fonts */
@@ -60,8 +63,20 @@
   opacity: 100%;
 }
 
-.go-back {
-  padding-left: 30px;
+.spotify-link {
+  text-decoration: none;
+  color: rgb(73, 174, 73);
+}
+
+.spotify-link:hover {
+  text-decoration: none;
+  color: green;
+}
+
+/* Images Page Styling */
+.image-container {
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 /* Merch Page Styling */
@@ -81,7 +96,7 @@
 }
 
 .footer-content {
-  /* background-color: rgb(211, 188, 12); */
+  padding-bottom: 30px;
 }
 
 /* Admin */
@@ -109,15 +124,28 @@
 }
 
 /* Media Queries */
+
+/* Screen size minimizes and navbar collapses */
 @media screen and (max-width: 995px) {
   .navbar-title.navbar-brand {
     display: none;
   }
+  .home-title {
+    margin: 40px;
+    font-family: Bluegrass;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+  }
 }
 
+/* Screen size maximizes and navbar expands */
 @media screen and (min-width: 995px) {
   .nav-link {
     margin: 25px;
     margin-top: 20px;
+  }
+  .home-title {
+    display: none;
   }
 }

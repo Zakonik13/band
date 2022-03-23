@@ -1,9 +1,10 @@
 import React from "react"
 import { Col } from "react-bootstrap"
+// import ImageGallery from "react-image-gallery"
 // Images
-import band2 from "../images/band2.jpeg"
-import band3 from "../images/band3.jpg"
-import band4 from "../images/band4.jpg"
+import music from "../images/music.svg"
+import photos from "../images/photo.svg"
+import videos from "../images/video.svg"
 // Components
 import Page from "../components/Page"
 
@@ -15,34 +16,41 @@ const Media = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo"
+          fontFamily: "Limo",
+          paddingRight: 30
         }}
       >
         <div style={{ paddingLeft: "30px" }}>Media</div>
       </div>
       <hr />
-      <div>
-        <Col style={{ display: "flex", justifyContent: "center" }}>
+
+      <Col style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
+        <div className="p-3">
           <a style={{ textDecoration: "none" }} href="/images">
             <h3 style={{ fontFamily: "Limo", fontSize: 20 }} className="text-center text-muted">
               Images
             </h3>
-            <img className="media-link" style={{ height: "300px", width: "auto" }} src={band2} alt="" />
+            <img className="media-link" style={{ height: "200px", width: "auto" }} src={photos} alt="" />
           </a>
+        </div>
+        <div className="p-3">
           <a style={{ textDecoration: "none" }} href="/music">
             <h3 style={{ fontFamily: "Limo", fontSize: 20 }} className="text-center text-muted">
               Music
             </h3>
-            <img className="media-link" style={{ height: "300px", width: "auto", fontFamily: "Limo" }} src={band3} alt="" />
+            <img className="media-link" style={{ height: "200px", width: "auto" }} src={music} alt="" />
           </a>
+        </div>
+        <div className="p-3">
           <a style={{ textDecoration: "none" }} href="/videos">
             <h3 style={{ fontFamily: "Limo", fontSize: 20 }} className="text-center text-muted">
               Videos
             </h3>
-            <img className="media-link" style={{ height: "300px", width: "auto" }} src={band4} alt="" />
+            <img className="media-link" style={{ height: "200px", width: "auto" }} src={videos} alt="" />
           </a>
-        </Col>
-      </div>
+        </div>
+      </Col>
+
       <hr />
     </Page>
   )

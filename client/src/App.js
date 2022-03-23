@@ -19,6 +19,7 @@ import Music from "./pages/Music";
 import Videos from "./pages/Videos";
 import AdminSignup from "./pages/AdminSignup";
 import Admin from "./pages/Admin";
+import MerchDetails from "./pages/MerchDetails";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -44,6 +45,7 @@ function App() {
             <Route path="/news" element={<News />} />
             <Route path="/about" element={<About />} />
             <Route path="/merch" element={<Merch />} />
+            <Route path="/merchdetails" element={<MerchDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/media" element={<Media />} />
             <Route path="/tour" element={<Tour />} />

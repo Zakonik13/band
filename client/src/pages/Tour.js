@@ -6,6 +6,7 @@ import Page from "../components/Page";
 
 const Tour = () => {
   const [state, dispatch] = useStoreContext();
+  const { tours } = state;
   const tourData = [
     {
       Month: "January",
@@ -48,6 +49,7 @@ const Tour = () => {
         <div>Tour</div>
       </div>
       <hr />
+
       <div className="p-5">
         <h1 style={{ display: "flex", justifyContent: "center", fontSize: 35 }}>
           Tour Dates 2022

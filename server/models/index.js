@@ -1,3 +1,5 @@
 const Admin = require('./Admin')
+const Music = require('./Music')
+const Merch = require('./Merch')
 
-module.exports = { Admin };
+module.exports = { Admin, Music, Merch };
