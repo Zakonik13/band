@@ -63,7 +63,21 @@
   opacity: 100%;
 }
 
+.spotify-link {
+  text-decoration: none;
+  color: rgb(73, 174, 73);
+}
+
+.spotify-link:hover {
+  text-decoration: none;
+  color: green;
+}
+
 /* Images Page Styling */
+.image-container {
+  padding-left: 50px;
+  padding-right: 50px;
+}
 
 /* Merch Page Styling */
 .merch-link {
@@ -82,7 +96,7 @@
 }
 
 .footer-content {
-  /* background-color: rgb(211, 188, 12); */
+  padding-bottom: 30px;
 }
 
 /* Admin */

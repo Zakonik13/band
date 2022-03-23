@@ -1,6 +1,8 @@
 import React from "react"
-import { Button } from "react-bootstrap"
 import ImageGallery from "react-image-gallery"
+//Components
+import BackButton from "../components/BackButton"
+import Page from "../components/Page"
 //Images
 import band1 from "../images/band1.jpg"
 import band2 from "../images/band2.jpg"
@@ -27,29 +29,30 @@ const Images = () => {
     }
   ]
   return (
-    <div>
-      <h2
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          fontSize: 35,
-          fontFamily: "Limo",
-          paddingTop: "40px"
-        }}
-      >
-        Images
-      </h2>
-      <hr />
+    <Page title={"Images"}>
       <div>
-        <Button className="back-button" href="/media" size="sm">
-          Back to Media
-        </Button>
-      </div>
+        <h2
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            fontSize: 35,
+            fontFamily: "Limo",
+            paddingTop: "20px"
+          }}
+        >
+          Images
+        </h2>
+        <hr />
 
-      <div className="image-container">
-        <ImageGallery infinite items={images} />
+        <div className="p-3">
+          <BackButton />
+        </div>
+
+        <div className="image-container">
+          <ImageGallery infinite items={images} />
+        </div>
       </div>
-    </div>
+    </Page>
   )
 }
 

@@ -1,5 +1,4 @@
 import React from "react"
-import { Row } from "react-bootstrap"
 import shirt from "../images/shirt.jpg"
 import hat from "../images/hat.jpg"
 import poster from "../images/poster.jpg"
@@ -21,13 +20,24 @@ const Merch = () => {
         <div>Merchandise</div>
       </div>
       <hr />
-      <div>
-        <Row style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center"
+        }}
+      >
+        <a href="/merchdetails">
           <img className="merch-link" style={{ height: "200px", width: "auto" }} src={vinyl} alt="" />
+        </a>
+        <a href="/merchdetails">
           <img className="merch-link" style={{ height: "200px", width: "auto" }} src={shirt} alt="" />
+        </a>
+        <a href="/merchdetails">
           <img className="merch-link" style={{ height: "200px", width: "auto" }} src={hat} alt="" />
+        </a>
+        <a href="/merchdetails">
           <img className="merch-link" style={{ height: "200px", width: "auto" }} src={poster} alt="" />
-        </Row>
+        </a>
       </div>
     </Page>
   )
