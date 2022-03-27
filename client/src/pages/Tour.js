@@ -26,8 +26,8 @@ const Tour = () => {
     }
   ]
 
-  function handleAlert() {
-    alert("Unfortunately this event is SOLD OUT")
+  const handleAlert = () => {
+    alert("This date is sold out")
   }
 
   useEffect(() => {
