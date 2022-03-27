@@ -1,37 +1,37 @@
-import React, { useState } from "react";
-import { Row, Button } from "react-bootstrap";
-// import Auth from "../utils/auth";
-// import { useMutation } from "@apollo/client";
-// import { LOGIN_ADMIN } from "../utils/mutations";
+import React, { useState } from "react"
+import { Row, Button } from "react-bootstrap"
+import Auth from "../utils/Auth.js"
+import { useMutation } from "@apollo/react-hooks"
+import { LOGIN_ADMIN } from "../utils/mutations"
 // Components
-import Page from "../components/Page";
+import Page from "../components/Page"
 
 const Admin = () => {
-  const [formState, setFormState] = useState({ email: "", password: "" });
-  // const [login, { error }] = useMutation(LOGIN_ADMIN);
+  const [formState, setFormState] = useState({ email: "", password: "" })
+  const [login, { error }] = useMutation(LOGIN_ADMIN)
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = event => {
+    const { name, value } = event.target
 
     setFormState({
       ...formState,
-      [name]: value,
-    });
-  };
+      [name]: value
+    })
+  }
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async event => {
+    event.preventDefault()
 
-    // try {
-    //   const { data } = await login({
-    //     variables: { ...formState },
-    //   });
+    try {
+      const { data } = await login({
+        variables: { ...formState }
+      })
 
-    //   Auth.login(data.login.token);
-    // } catch (e) {
-    //   console.error(e);
-    // }
-  };
+      Auth.login(data.login.token)
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   return (
     <Page title="Admin">
@@ -40,24 +40,12 @@ const Admin = () => {
           <div>
             <Row className="pos">
               <label>Admin Email</label>
-              <input
-                name="email"
-                type="email"
-                id="email"
-                value={formState.email}
-                onChange={handleChange}
-              />
+              <input name="email" type="email" id="email" value={formState.email} onChange={handleChange} />
             </Row>
             <br />
             <Row className="pos">
               <label>Admin Password</label>
-              <input
-                name="password"
-                type="password"
-                id="password"
-                value={formState.password}
-                onChange={handleChange}
-              />
+              <input name="password" type="password" id="password" value={formState.password} onChange={handleChange} />
             </Row>
             <br />
             <Row>
@@ -68,7 +56,7 @@ const Admin = () => {
         </form>
       </div>
     </Page>
-  );
-};
+  )
+}
 
-export default Admin;
+export default Admin
