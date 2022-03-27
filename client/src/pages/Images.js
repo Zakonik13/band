@@ -44,7 +44,7 @@ const Images = () => {
         </h2>
         <hr />
 
-        <div className="p-3">
+        <div className="p-4">
           <BackButton />
         </div>
 

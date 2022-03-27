@@ -5,8 +5,8 @@ import BackButton from "../components/BackButton"
 
 const Videos = () => {
   const videos = [
-    { title: "Bluegrass Boogie Live @ Bonnaroo", date: "January 2016", source: "https://www.youtube.com/embed/55XvlFFJBH4" },
-    { title: "Matelot Live @ Madison Square Garden", date: "July 2018", source: "https://www.youtube.com/embed/1c4OOYp-5ic" }
+    { title: "Arizona Live @ Bonnaroo", date: "January 2016", source: "https://www.youtube.com/embed/55XvlFFJBH4" },
+    { title: "Fight Song Live @ Madison Square Garden", date: "July 2018", source: "https://www.youtube.com/embed/1c4OOYp-5ic" }
   ]
 
   return (
