@@ -20,6 +20,13 @@ const Footer = () => {
             . All rights reserved.
           </p>
         </small>
+        <small>
+          <p className="m-0">
+            <a style={{ textDecoration: "none" }} href="/admin" className="text-muted">
+              Admin Log In
+            </a>
+          </p>
+        </small>
       </footer>
     </div>
   )

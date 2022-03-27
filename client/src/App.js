@@ -23,6 +23,7 @@ import MerchDetails from "./pages/MerchDetails"
 import MusicDetails from "./pages/MusicDetails"
 import AddMerch from "./pages/AddMerch"
 import EditNews from "./pages/EditNews"
+import AdminEdit from "./pages/AdminEdit"
 
 const client = new ApolloClient({
   request: operation => {
@@ -45,12 +46,16 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
+            //News
             <Route path="/news" element={<News />} />
             <Route path="/editnews" element={<EditNews />} />
+            //About
             <Route path="/about" element={<About />} />
+            //Merch
             <Route path="/merch" element={<Merch />} />
             <Route path="/addmerch" element={<AddMerch />} />
             <Route path="/merchdetails" element={<MerchDetails />} />
+            //Cart
             <Route path="/cart" element={<Cart />} />
             <Route path="/media" element={<Media />} />
             <Route path="/tour" element={<Tour />} />
@@ -60,6 +65,7 @@ function App() {
             <Route path="/videos" element={<Videos />} />
             <Route path="/create-new-admin-user" element={<AdminSignup />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/adminedit" element={<AdminEdit />} />
           </Routes>
           <Footer />
         </StoreProvider>

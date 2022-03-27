@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import Page from "../components/Page"
 import { Form, Button, InputGroup, FormControl, Container } from "react-bootstrap"
+//Components
+import BackButton from "../components/BackButton"
 
 const EditNews = () => {
   const [state, setState] = useState({
@@ -31,6 +33,7 @@ const EditNews = () => {
         Edit News
       </h1>
       <hr />
+      <BackButton />
 
       <Container
         style={{
