@@ -20,6 +20,9 @@ import Videos from "./pages/Videos";
 import AdminSignup from "./pages/AdminSignup";
 import Admin from "./pages/Admin";
 import MerchDetails from "./pages/MerchDetails";
+import MusicDetails from "./pages/MusicDetails";
+import AddMerch from "./pages/AddMerch";
+import EditNews from "./pages/EditNews";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -43,14 +46,17 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/news" element={<News />} />
+            <Route path="/editnews" element={<EditNews />} />
             <Route path="/about" element={<About />} />
             <Route path="/merch" element={<Merch />} />
+            <Route path="/addmerch" element={<AddMerch />} />
             <Route path="/merchdetails" element={<MerchDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/media" element={<Media />} />
             <Route path="/tour" element={<Tour />} />
             <Route path="/images" element={<Images />} />
             <Route path="/music" element={<Music />} />
+            <Route path="/musicdetails" element={<MusicDetails />} />
             <Route path="/videos" element={<Videos />} />
             <Route path="/create-new-admin-user" element={<AdminSignup />} />
             <Route path="/admin" element={<Admin />} />

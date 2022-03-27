@@ -6,9 +6,13 @@ import BackButton from "../components/BackButton"
 import hat from "../images/hat.jpg"
 
 const MerchDetails = () => {
+  function handleAlert() {
+    alert("Unfortunately this item is SOLD OUT")
+  }
+
   return (
     <>
-      <div className="p-2">
+      <div className="p-4">
         <BackButton />
       </div>
       <h1
@@ -55,7 +59,9 @@ const MerchDetails = () => {
           >
             Quantity: 4
           </h6>
-          <Button>Add to Cart</Button>
+          <Button variant="outline-secondary" onClick={handleAlert}>
+            Add to Cart
+          </Button>
         </div>
       </div>
     </>
