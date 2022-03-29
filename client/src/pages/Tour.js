@@ -1,13 +1,21 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { UPDATE_TOUR } from "../utils/actions"
 import { useStoreContext } from "../utils/GlobalState"
 import { Button } from "react-bootstrap"
 // Components
 import Page from "../components/Page"
+import AlertModal from "../components/AlertModal"
 
 const Tour = () => {
   const [state, dispatch] = useStoreContext()
   const { tours } = state
+  const [modalShow, setModalShow] = useState(false)
+
+  let alertDetails = {
+    title: "This tour date is sold out!",
+    ok: true
+  }
+
   const tourData = [
     {
       Month: "January",
@@ -27,7 +35,7 @@ const Tour = () => {
   ]
 
   const handleAlert = () => {
-    alert("This date is sold out")
+    setModalShow(true)
   }
 
   useEffect(() => {
@@ -52,6 +60,7 @@ const Tour = () => {
         }}
       >
         <div>Tour</div>
+        <AlertModal alertDetails={alertDetails} show={modalShow} onHide={() => setModalShow(false)} />
       </div>
       <hr />
 

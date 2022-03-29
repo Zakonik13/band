@@ -4,17 +4,34 @@ import { Form, Button, InputGroup, FormControl, Container } from "react-bootstra
 import Auth from "../utils/Auth.js"
 //Components
 import BackButton from "../components/BackButton"
-// import { ADD_MERCH } from "../utils/mutation"
-// import { useMutation } from "@apollo/react-hooks"
+import AlertModal from "../components/AlertModal"
+import { ADD_MERCH } from "../utils/mutations"
+import { useMutation } from "@apollo/react-hooks"
 
 const AddMerch = () => {
+  const [addMerch] = useMutation(ADD_MERCH)
+  const [modalShow, setModalShow] = useState(false)
+
+  let alertDetails = {
+    title: "Do you want to add more merchandise?",
+    back: "/adminedit",
+    add: true
+  }
+
   const [state, setState] = useState({
     type: "",
     name: "",
-    description: "",
-    price: "",
-    quantity: ""
+    price: 0,
+    quantity: 0,
+    image: ""
   })
+
+  const handleAddMerch = async () => {
+    setModalShow(true)
+    await addMerch({
+      variables: { type: state.type, name: state.name, price: parseFloat(state.price), quantity: parseFloat(state.quantity), image: state.image }
+    })
+  }
 
   const handleChange = event => {
     const { name, value } = event.target
@@ -24,7 +41,7 @@ const AddMerch = () => {
     })
   }
 
-  console.log(state)
+  // console.log(state)
 
   return (
     <>
@@ -42,7 +59,7 @@ const AddMerch = () => {
           </h1>
           <hr />
           <BackButton />
-
+          <AlertModal alertDetails={alertDetails} show={modalShow} setModalShow={setModalShow} onHide={() => setModalShow(false)} />
           <Container
             style={{
               display: "flex",
@@ -65,13 +82,16 @@ const AddMerch = () => {
               <div
                 style={{
                   display: "flex",
-                  justifyContent: "center",
-                  padding: "15px"
+                  justifyContent: "center"
                 }}
               >
-                <Button size="sm" variant="outline-secondary">
+                {/* <Button size="sm" variant="outline-secondary">
                   Add Image
-                </Button>
+                </Button> */}
+                <Form.Group className="mb-4">
+                  <Form.Label>Image Link Address</Form.Label>
+                  <Form.Control placeholder="Enter image url..." name="image" onChange={handleChange} />
+                </Form.Group>
               </div>
 
               <Form.Group className="mb-4">
@@ -80,15 +100,10 @@ const AddMerch = () => {
               </Form.Group>
 
               <Form.Group className="mb-4">
-                <Form.Label>Description of item</Form.Label>
-                <Form.Control placeholder="Enter item description..." name="description" onChange={handleChange} />
-              </Form.Group>
-
-              <Form.Group className="mb-4">
                 <Form.Label>Price of item</Form.Label>
                 <InputGroup className="mb-4">
                   <InputGroup.Text>$</InputGroup.Text>
-                  <FormControl onChange={handleChange} name="price" placeholder="Enter price..." />
+                  <FormControl onChange={handleChange} type="number" name="price" placeholder="Enter price..." />
                 </InputGroup>
               </Form.Group>
 
@@ -105,7 +120,7 @@ const AddMerch = () => {
               paddingTop: "20px"
             }}
           >
-            <Button className="mb-4" variant="outline-secondary">
+            <Button className="mb-4" variant="outline-secondary" onClick={handleAddMerch}>
               Complete
             </Button>
           </div>
