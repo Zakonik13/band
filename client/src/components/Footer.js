@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className="footer-content">
       <footer className="text-center small text-muted ">
-        <div className="pb-2">
+        <div className="mb-2">
           <SocialIcon className="social m-1" url="https://www.linkedin.com/in/alexlehr" />
           <SocialIcon className="social m-1" url="https://www.facebook.com/alex.lehr.75" />
           <SocialIcon className="social m-1" url="https://instagram.com/alehr45/" />
@@ -18,6 +18,13 @@ const Footer = () => {
               BlueGrass Billies
             </a>
             . All rights reserved.
+          </p>
+        </small>
+        <small>
+          <p className="m-0">
+            <a style={{ textDecoration: "none" }} href="/admin" className="text-muted">
+              Admin Log In
+            </a>
           </p>
         </small>
       </footer>

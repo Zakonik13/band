@@ -1,9 +1,8 @@
 import React, { useState, useRef } from "react"
 import $ from "jquery"
 
-const PictureUploader = ({ type, setImage }) => {
+const PictureUploader = ({ setImage }) => {
   const inputRef = useRef()
-  const [updateImage] = useMutation(UPDATE_IMAGE)
   const [src, setSRC] = useState(false)
   let picture = ""
 
@@ -13,7 +12,6 @@ const PictureUploader = ({ type, setImage }) => {
 
     // setPicture(picture);
     setSRC(src)
-    upload()
   }
 
   const renderPreview = () => {
@@ -44,17 +42,14 @@ const PictureUploader = ({ type, setImage }) => {
       type: "POST",
       data: formData,
       headers: {
-        Authorization: "Client-ID 3bd0a7ed5554183"
+        Authorization: "Client-ID 85faf3da5c2c9ca"
       },
       cache: false,
       contentType: false,
       processData: false,
       async: false,
       success: function (response) {
-        result = data
           setImage(response.data.link)
-
-        // Code to handle a succesfull upload
       }
     })
     return result
@@ -71,7 +66,7 @@ const PictureUploader = ({ type, setImage }) => {
 
       <button className="btn btn-success  " onClick={handleUpload}>
         <div>{renderPreview()}</div>
-        {type === "job" ? "Add Job Image" : "Add Profile Image"}
+        Add Item Image
       </button>
     </div>
   )
