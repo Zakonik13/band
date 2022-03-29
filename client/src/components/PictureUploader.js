@@ -12,6 +12,7 @@ const PictureUploader = ({ setImage }) => {
 
     // setPicture(picture);
     setSRC(src)
+    upload()
   }
 
   const renderPreview = () => {

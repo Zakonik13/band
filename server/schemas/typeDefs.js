@@ -1,52 +1,53 @@
 const { gql } = require("apollo-server-express")
 
 const typeDefs = gql`
-type Query {
+  type Query {
     admins: [Admin]
     music: [Music]
     merch: [Merch]
-}
+  }
 
-type Admin {
+  type Admin {
     _id: ID!
     email: String!
     password: String!
-}
+  }
 
-type Music {
+  type Music {
     _id: ID!
     title: String!
     source: String!
-}
+  }
 
-type Merch {
+  type Merch {
     _id: ID
     name: String!
-    description: String!
+    type: String!
+    image: String
     quantity: Int
     price: Float
-}
+  }
 
-type Tour {
+  type Tour {
     _id: ID!
     date: String!
     city: String!
     venue: String!
     link: String
-}
+  }
 
-type Auth {
+  type Auth {
     token: ID!
     admin: Admin
-}
+  }
 
-type Mutation {
+  type Mutation {
     addAdmin(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addMusic(title: String!, source: String!): Music
-    addMerch(name: String!, description: String!, quantity: Int!, price: Float!): Merch
-    updateMerch(_id: ID!, name: String!, description: String!, quantity: Int!, price: Float!): Merch
-}
+    addMerch(name: String!, image: String, type: String!, quantity: Int!, price: Float!): Merch
+    updateMerch(_id: ID!, name: String!, image: String, type: String!, quantity: Int!, price: Float!): Merch
+  }
 `
 
 // export the typeDefs
