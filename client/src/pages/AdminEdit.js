@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Row } from "react-bootstrap"
 //Components
 import Page from "../components/Page"
@@ -21,23 +21,30 @@ const AdminEdit = () => {
 
       <Row style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
         <div className="p-3">
-          <a style={{ textDecoration: "none" }} href="/addmerch">
+          <a style={{ textDecoration: "none" }} href="/add-merch">
             <h3 style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }} className="text-center text-muted">
               Add Merch
             </h3>
           </a>
         </div>
         <div className="p-3">
-          <a style={{ textDecoration: "none" }} href="/editnews">
+          <a style={{ textDecoration: "none" }} href="/add-tour-date">
             <h3 style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }} className="text-center text-muted">
-              Edit News
+              Add Tour Date
             </h3>
           </a>
         </div>
         <div className="p-3">
-          <a style={{ textDecoration: "none" }} href="/edittour">
+          <a style={{ textDecoration: "none" }} href="/add-news">
             <h3 style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }} className="text-center text-muted">
-              Edit Tour
+              Add News
+            </h3>
+          </a>
+        </div>
+        <div className="p-3">
+          <a style={{ textDecoration: "none" }} href="/edit-about">
+            <h3 style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }} className="text-center text-muted">
+              Edit About
             </h3>
           </a>
         </div>

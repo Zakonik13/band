@@ -2,6 +2,9 @@ const { signToken } = require("../utils/auth")
 const { Admin } = require("../models")
 const { Music } = require("../models")
 const { Merch } = require("../models")
+const { Tour } = require("../models")
+const { News } = require("../models")
+const { About } = require("../models")
 
 const resolvers = {
   Query: {
@@ -13,6 +16,15 @@ const resolvers = {
     },
     merch: async () => {
       return Merch.find()
+    },
+    tour: async () => {
+      return Tour.find()
+    },
+    news: async () => {
+      return News.find()
+    },
+    about: async () => {
+      return About.find()
     }
   },
   Mutation: {
@@ -45,12 +57,38 @@ const resolvers = {
 
       return music
     },
+    addNews: async (parent, args) => {
+      const news = await News.create(args)
+
+      return news
+    },
     addMerch: async (parent, args) => {
       const merch = await Merch.create(args)
 
       return merch
     },
-    updateMerch: async (parent, { _id, name, description, price, quantity }) => {
+
+    addTourDate: async (parent, args) => {
+      const tour = await Tour.create(args)
+
+      return tour
+    },
+    addAbout: async (parent, args) => {
+      const about = await About.create(args)
+
+      return about
+    },
+    removeTourDate: async (parent, { _id }) => {
+      await Tour.findOneAndDelete({ _id })
+    },
+    removeMerch: async (parent, { _id }) => {
+      await Merch.findOneAndDelete({ _id })
+    },
+    removeNews: async (parent, { _id }) => {
+      await News.findOneAndDelete({ _id })
+    },
+
+    updateMerch: async (parent, { _id, name, image, price, quantity }) => {
       const merch = await Merch.findOneAndUpdate(
         { _id },
         {
@@ -64,6 +102,17 @@ const resolvers = {
       )
 
       return merch
+    },
+    updateAbout: async (parent, { _id, body }) => {
+      const about = await About.findOneAndUpdate(
+        { _id },
+        {
+          body: body
+        },
+        { new: true }
+      )
+
+      return about
     }
   }
 }

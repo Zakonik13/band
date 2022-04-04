@@ -12,3 +12,35 @@ export const GET_MERCH = gql`
     }
   }
 `
+
+export const GET_TOUR_DATE = gql`
+  query Tour {
+    tour {
+      _id
+      date
+      location
+      venue
+      link
+    }
+  }
+`
+
+export const GET_NEWS = gql`
+  query News {
+    news {
+      _id
+      date
+      title
+      body
+    }
+  }
+`
+
+export const GET_ABOUT = gql`
+  query About {
+    about {
+      _id
+      body
+    }
+  }
+`

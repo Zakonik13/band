@@ -18,7 +18,7 @@ class AuthService {
   isTokenExpired(token) {
     try {
       const decoded = decode(token)
-      if (decoded.exp < Date.now() / 1000) {
+      if (decoded.exp < Date.now() / 2000) {
         return true
       } else {
         return false
@@ -39,7 +39,7 @@ class AuthService {
     // saves user token to localStorage
     localStorage.setItem("id_token", idToken)
 
-    window.location.assign("/adminedit")
+    window.location.assign("/admin-edit")
   }
 
   // clear token from localStorage and force logout with reload
