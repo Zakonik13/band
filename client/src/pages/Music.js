@@ -21,7 +21,7 @@ const Music = () => {
         </h2>
         <hr />
         <BackButton />
-        <a href="/musicdetails">
+        <a href="/music-details">
           <h1
             style={{
               display: "flex",
@@ -35,7 +35,7 @@ const Music = () => {
           </h1>
         </a>
 
-        <a href="/musicdetails">
+        <a href="/music-details">
           <h1
             style={{
               display: "flex",
@@ -48,7 +48,7 @@ const Music = () => {
             <strong>Twangalang (2019)</strong>
           </h1>
         </a>
-        <a href="/musicdetails">
+        <a href="/music-details">
           <h1
             style={{
               display: "flex",

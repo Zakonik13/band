@@ -1,6 +1,8 @@
 import React from "react"
 import { Navbar, Nav, Container } from "react-bootstrap"
 import Auth from "../utils/Auth.js"
+//Components
+import NavBadge from "./NavBadge.js"
 
 const NavBar = () => {
   const handleLogOut = event => {
@@ -15,7 +17,7 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
             {Auth.loggedIn() && (
-              <Nav.Link style={{ color: "blue" }} href="/adminedit">
+              <Nav.Link style={{ color: "blue" }} href="/admin-edit">
                 Edit
               </Nav.Link>
             )}
@@ -30,7 +32,10 @@ const NavBar = () => {
             </div>
             <Nav.Link href="/tour">Tour</Nav.Link>
             <Nav.Link href="/news">News</Nav.Link>
-            <Nav.Link href="/cart">Cart</Nav.Link>
+            <Nav.Link href="/cart">
+              Cart
+              <NavBadge></NavBadge>
+            </Nav.Link>
             {Auth.loggedIn() && (
               <Nav.Link style={{ color: "blue" }} href="/" onClick={handleLogOut}>
                 Logout

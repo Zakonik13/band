@@ -14,7 +14,7 @@ const AddMerch = () => {
 
   let alertDetails = {
     title: "Do you want to add more merchandise?",
-    back: "/adminedit",
+    back: "/merch",
     add: true
   }
 
@@ -79,20 +79,10 @@ const AddMerch = () => {
                 </Form.Select>
               </Form.Group>
 
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center"
-                }}
-              >
-                {/* <Button size="sm" variant="outline-secondary">
-                  Add Image
-                </Button> */}
-                <Form.Group className="mb-4">
-                  <Form.Label>Image Link Address</Form.Label>
-                  <Form.Control placeholder="Enter image url..." name="image" onChange={handleChange} />
-                </Form.Group>
-              </div>
+              <Form.Group className="mb-4">
+                <Form.Label>Image Link Address</Form.Label>
+                <Form.Control placeholder="Enter image url..." name="image" onChange={handleChange} />
+              </Form.Group>
 
               <Form.Group className="mb-4">
                 <Form.Label>Name of item</Form.Label>

@@ -11,17 +11,9 @@ import Page from "../components/Page"
 const Media = () => {
   return (
     <Page title={"Media"}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          fontSize: 35,
-          fontFamily: "Limo",
-          paddingRight: 30
-        }}
-      >
-        <div style={{ paddingLeft: "30px" }}>Media</div>
-      </div>
+      <center>
+        <h1 style={{ paddingLeft: "30px", fontFamily: "Limo", fontSize: "35px" }}>Media</h1>
+      </center>
       <hr />
 
       <Col style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
