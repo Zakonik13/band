@@ -1,34 +1,36 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 // import { useStoreContext } from "../utils/GlobalState"
-import { Button } from "react-bootstrap"
-import { useQuery, useMutation } from "@apollo/react-hooks"
-import { REMOVE_TOUR_DATE } from "../utils/mutations"
-import { GET_TOUR_DATE } from "../utils/queries"
-import Auth from "../utils/Auth.js"
+import { Button } from "react-bootstrap";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import { REMOVE_TOUR_DATE } from "../utils/mutations";
+import { GET_TOUR_DATE } from "../utils/queries";
+import Auth from "../utils/Auth.js";
 // Components
-import Page from "../components/Page"
-import AlertModal from "../components/AlertModal"
+import Page from "../components/Page";
+import AlertModal from "../components/AlertModal";
 
 const Tour = () => {
-  const { data, loading } = useQuery(GET_TOUR_DATE)
-  const [removeTourDate] = useMutation(REMOVE_TOUR_DATE)
+  const { data, loading } = useQuery(GET_TOUR_DATE);
+  const [removeTourDate] = useMutation(REMOVE_TOUR_DATE);
   // const [state, dispatch] = useStoreContext()
   // const { tours } = state
-  const [modalShow, setModalShow] = useState(false)
+  const [modalShow, setModalShow] = useState(false);
 
   if (loading) {
-    return ""
+    return "";
   }
 
   let alertDetails = {
     title: "This tour date is sold out!",
     ok: true
-  }
+  };
 
   const handleRemove = async id => {
-    await removeTourDate({ variables: { id } })
-    window.location.assign("/tour")
-  }
+    await removeTourDate({
+      variables: { id },
+      refetchQueries: [{ query: GET_TOUR_DATE }]
+    });
+  };
 
   // const tourData = [
   //   {
@@ -74,34 +76,48 @@ const Tour = () => {
         }}
       >
         <div>Tour</div>
-        <AlertModal alertDetails={alertDetails} show={modalShow} onHide={() => setModalShow(false)} />
+        <AlertModal
+          alertDetails={alertDetails}
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
       </div>
       <hr />
 
-      {data.tour.map(data => {
+      {data.tour.map(item => {
         return (
-          <center key={data._id}>
+          <center key={item._id}>
             <div style={{ padding: "20px" }}>
               <h4 style={{ fontFamily: "Limo" }}>
-                {data.date} @ {data.venue} , {data.location}
+                {item.date} @ {item.venue} , {item.location}
               </h4>
               {Auth.loggedIn() ? (
-                <Button onClick={() => handleRemove(data._id)} variant="outline-danger" size="sm" className="mt-3">
+                <Button
+                  onClick={() => handleRemove(item._id)}
+                  variant="outline-danger"
+                  size="sm"
+                  className="mt-3"
+                >
                   Remove Date
                 </Button>
               ) : (
-                <Button href={data.link} target="_blank" size="sm" className="mt-3">
+                <Button
+                  href={item.link}
+                  target="_blank"
+                  size="sm"
+                  className="mt-3"
+                >
                   Buy Tickets
                 </Button>
               )}
             </div>
           </center>
-        )
+        );
       })}
 
       <hr />
     </Page>
-  )
-}
+  );
+};
 
-export default Tour
+export default Tour;
