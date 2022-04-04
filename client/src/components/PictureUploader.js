@@ -7,6 +7,7 @@ const PictureUploader = ({ setImage }) => {
   let picture = ""
 
   const handlePictureSelected = async event => {
+    console.log(event.target.files[0])
     picture = event.target.files[0]
     var src = URL.createObjectURL(picture)
 
@@ -32,6 +33,7 @@ const PictureUploader = ({ setImage }) => {
   }
 
   const upload = () => {
+    console.log(picture)
     inputRef.current?.click()
     var formData = new FormData()
 
@@ -43,14 +45,14 @@ const PictureUploader = ({ setImage }) => {
       type: "POST",
       data: formData,
       headers: {
-        Authorization: "Client-ID 85faf3da5c2c9ca"
+        Authorization: "Client-ID 3bd0a7ed5554183"
       },
       cache: false,
       contentType: false,
       processData: false,
       async: false,
       success: function (response) {
-          setImage(response.data.link)
+        setImage(response.data.link)
       }
     })
     return result
