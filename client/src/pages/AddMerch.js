@@ -16,7 +16,7 @@ const AddMerch = () => {
 
   let alertDetails = {
     title: "Do you want to add more merchandise?",
-    back: "/adminedit",
+    back: "/merch",
     add: true
   }
 

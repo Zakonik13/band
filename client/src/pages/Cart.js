@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 // Components
-import Page from "../components/Page";
+import Page from "../components/Page"
 
 const Cart = () => {
   return (
@@ -10,14 +10,28 @@ const Cart = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo",
+          fontFamily: "Limo"
         }}
       >
         <div>Cart</div>
       </div>
       <hr />
-    </Page>
-  );
-};
 
-export default Cart;
+      <div>
+        <h1
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            fontSize: 25,
+            fontFamily: "Limo",
+            paddingTop: "20px"
+          }}
+        >
+          You have nothing in your cart.
+        </h1>
+      </div>
+    </Page>
+  )
+}
+
+export default Cart
