@@ -18,7 +18,7 @@ const About = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo"
+          fontFamily: "Limo",
         }}
       >
         <div>About Us</div>

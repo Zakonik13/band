@@ -5,19 +5,19 @@ import mail from "../images/mail.svg";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_SUBSCRIPTION } from "../utils/mutations";
 
-function AlertModal(props) {
+function AlertModal({ alertDetails, setModalShow, show, onHide }) {
   const [addSubscription] = useMutation(ADD_SUBSCRIPTION);
   const [state, setState] = useState({
-    email: ""
+    email: "",
   });
 
-  console.log(props.alertDetails);
+  console.log(alertDetails);
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setState({
       ...state,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -25,10 +25,10 @@ function AlertModal(props) {
     try {
       await addSubscription({
         variables: {
-          email: state.email
-        }
+          email: state.email,
+        },
       });
-      props.setModalShow(false);
+      setModalShow(false);
     } catch (e) {
       alert("You must provide a valid email address.");
     }
@@ -36,23 +36,23 @@ function AlertModal(props) {
 
   return (
     <Modal
-      {...props}
+      show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Body>
-        {props.alertDetails.email === true ? (
+        {alertDetails.email === true ? (
           <>
             <h4
               style={{
                 display: "flex",
                 justifyContent: "center",
                 fontFamily: "Limo",
-                fontSize: "40px"
+                fontSize: "40px",
               }}
             >
-              {props.alertDetails.title}
+              {alertDetails.title}
             </h4>
             <center className="p-4">
               <img alt="mail-icon" height="100px" width="auto" src={mail}></img>
@@ -63,14 +63,14 @@ function AlertModal(props) {
             style={{
               display: "flex",
               justifyContent: "center",
-              fontFamily: "Limo"
+              fontFamily: "Limo",
             }}
           >
-            {props.alertDetails.title}
+            {alertDetails.title}
           </h4>
         )}
 
-        {props.alertDetails.email ? (
+        {alertDetails.email ? (
           <Form.Group className="mb-4">
             <Form.Control
               placeholder="Enter email address..."
@@ -83,26 +83,22 @@ function AlertModal(props) {
         )}
       </Modal.Body>
       <Modal.Footer>
-        {props.alertDetails.submit ? (
+        {alertDetails.submit ? (
           <Button onClick={handleAddSubscription}>Submit</Button>
         ) : (
           ""
         )}
-        {props.alertDetails.add ? (
+        {alertDetails.add ? (
           <Button onClick={() => window.location.reload(false)}>Add</Button>
         ) : (
           ""
         )}
-        {props.alertDetails.back ? (
-          <Button onClick={() => props.setModalShow(false)}>Close</Button>
+        {alertDetails.back ? (
+          <Button onClick={() => setModalShow(false)}>Close</Button>
         ) : (
           ""
         )}
-        {props.alertDetails.ok ? (
-          <Button onClick={props.onHide}>OK</Button>
-        ) : (
-          ""
-        )}
+        {alertDetails.ok ? <Button onClick={onHide}>OK</Button> : ""}
       </Modal.Footer>
     </Modal>
   );
