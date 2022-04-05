@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useStoreContext } from "../utils/GlobalState";
 import { GET_MERCH } from "../utils/queries";
 import { REMOVE_MERCH } from "../utils/mutations";
 import { useQuery, useMutation } from "@apollo/react-hooks";
@@ -6,21 +7,57 @@ import { Col, Button } from "react-bootstrap";
 import Auth from "../utils/Auth.js";
 // Components
 import Page from "../components/Page";
+import { UPDATE_CART } from "../utils/actions";
 
 const Merch = () => {
+  const [state, dispatch] = useStoreContext();
+  const [formState, setFormState] = useState({
+    image: "",
+    name: "",
+    price: "",
+    quantity: "",
+    type: "",
+  });
   const { data, loading } = useQuery(GET_MERCH);
   const [removeMerch] = useMutation(REMOVE_MERCH);
 
-  const handleRemove = async id => {
+  useEffect(() => {
+    if (formState.name === "") {
+      console.log("No items");
+    } else {
+      dispatch({
+        type: UPDATE_CART,
+        cart: formState,
+      });
+    }
+  }, [formState]);
+
+  const handleRemove = async (id) => {
     await removeMerch({
       variables: { id },
-      refetchQueries: [{ query: GET_MERCH }]
+      refetchQueries: [{ query: GET_MERCH }],
     });
   };
 
   if (loading) {
     return "";
   }
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    let index = event.target.value;
+
+    setFormState({
+      ...formState,
+      image: data.merch[index].image,
+      name: data.merch[index].name,
+      price: data.merch[index].price,
+      qty: data.merch[index].quantity,
+      type: data.merch[index].type,
+    });
+  };
+
+  console.log(state, formState);
 
   return (
     <Page title={"Merch"}>
@@ -29,7 +66,7 @@ const Merch = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo"
+          fontFamily: "Limo",
         }}
       >
         <div>Merchandise</div>
@@ -37,14 +74,14 @@ const Merch = () => {
       <hr />
 
       <Col>
-        {data.merch.map(item => {
+        {data.merch.map((item, index) => {
           return (
             <div
               key={item._id}
               style={{
                 display: "flex",
                 justifyContent: "center",
-                padding: "20px"
+                padding: "20px",
               }}
             >
               <img
@@ -70,6 +107,8 @@ const Merch = () => {
                       </Button>
                     ) : (
                       <Button
+                        onClick={handleChange}
+                        value={index}
                         className="m-2"
                         size="sm"
                         variant="outline-secondary"
