@@ -26,8 +26,10 @@ const Tour = () => {
   };
 
   const handleRemove = async (id) => {
-    await removeTourDate({ variables: { id } });
-    window.location.assign("/tour");
+    await removeTourDate({
+      variables: { id },
+      refetchQueries: [{ query: GET_TOUR_DATE }],
+    });
   };
 
   // const tourData = [
@@ -82,16 +84,16 @@ const Tour = () => {
       </div>
       <hr />
 
-      {data.tour.map((data) => {
+      {data.tour.map((item) => {
         return (
-          <center key={data._id}>
+          <center key={item._id}>
             <div style={{ padding: "20px" }}>
               <h4 style={{ fontFamily: "Limo" }}>
-                {data.date} @ {data.venue} , {data.location}
+                {item.date} @ {item.venue} , {item.location}
               </h4>
               {Auth.loggedIn() ? (
                 <Button
-                  onClick={() => handleRemove(data._id)}
+                  onClick={() => handleRemove(item._id)}
                   variant="outline-danger"
                   size="sm"
                   className="mt-3"
@@ -100,7 +102,7 @@ const Tour = () => {
                 </Button>
               ) : (
                 <Button
-                  href={data.link}
+                  href={item.link}
                   target="_blank"
                   size="sm"
                   className="mt-3"

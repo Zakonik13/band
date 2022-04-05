@@ -5,12 +5,14 @@ import Auth from "../utils/Auth.js"
 //Components
 import BackButton from "../components/BackButton"
 import AlertModal from "../components/AlertModal"
+import PictureUploader from "../components/PictureUploader"
 import { ADD_MERCH } from "../utils/mutations"
 import { useMutation } from "@apollo/react-hooks"
 
 const AddMerch = () => {
   const [addMerch] = useMutation(ADD_MERCH)
   const [modalShow, setModalShow] = useState(false)
+  const [image, setImage] = useState("")
 
   let alertDetails = {
     title: "Do you want to add more merchandise?",
@@ -23,13 +25,12 @@ const AddMerch = () => {
     name: "",
     price: 0,
     quantity: 0,
-    image: ""
   })
 
   const handleAddMerch = async () => {
     setModalShow(true)
     await addMerch({
-      variables: { type: state.type, name: state.name, price: parseFloat(state.price), quantity: parseFloat(state.quantity), image: state.image }
+      variables: { type: state.type, name: state.name, price: parseFloat(state.price), quantity: parseFloat(state.quantity), image: image }
     })
   }
 
@@ -79,10 +80,16 @@ const AddMerch = () => {
                 </Form.Select>
               </Form.Group>
 
-              <Form.Group className="mb-4">
-                <Form.Label>Image Link Address</Form.Label>
-                <Form.Control placeholder="Enter image url..." name="image" onChange={handleChange} />
-              </Form.Group>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center"
+                }}
+              >
+                <Form.Group className="mb-4">
+                  <PictureUploader setImage={setImage}/>
+                </Form.Group>
+              </div>
 
               <Form.Group className="mb-4">
                 <Form.Label>Name of item</Form.Label>
