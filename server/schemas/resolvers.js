@@ -2,6 +2,8 @@ const { signToken } = require("../utils/auth")
 const { Admin } = require("../models")
 const { Music } = require("../models")
 const { Merch } = require("../models")
+const { Image } = require("../models")
+const { Video } = require("../models")
 
 const resolvers = {
   Query: {
@@ -64,7 +66,17 @@ const resolvers = {
       )
 
       return merch
-    }
+    },
+    addImage: async (parent, args) => {
+      const image = await Image.create(args)
+
+      return image
+    },
+    addVideo: async (parent, args) => {
+      const video = await Video.create(args)
+
+      return video
+    },
   }
 }
 

@@ -23,10 +23,10 @@ export const LOGIN_ADMIN = gql`
 `
 
 export const ADD_MUSIC = gql`
-  mutation AddMusic($title: String!, $source: String!) {
-    addMusic(title: $title, source: $source) {
+  mutation AddMusic($title: String!, $link: String!) {
+    addMusic(title: $title, link: $link) {
       title
-      source
+      link
     }
   }
 `

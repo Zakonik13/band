@@ -6,7 +6,7 @@ const MusicSchema =  new Schema ({
         type: String,
         required: true,
     },
-    source: {
+    link: {
         type: String,
         required: true
     }

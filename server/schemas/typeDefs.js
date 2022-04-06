@@ -16,7 +16,7 @@ const typeDefs = gql`
   type Music {
     _id: ID!
     title: String!
-    source: String!
+    link: String!
   }
 
   type Merch {
@@ -44,9 +44,11 @@ const typeDefs = gql`
   type Mutation {
     addAdmin(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addMusic(title: String!, source: String!): Music
+    addMusic(title: String!, link: String!): Music
     addMerch(name: String!, image: String, type: String!, quantity: Int!, price: Float!): Merch
     updateMerch(_id: ID!, name: String!, image: String, type: String!, quantity: Int!, price: Float!): Merch
+    addImage(title: String!, link: String!): Image  
+    addVideo(title: String!, link: String!): Video
   }
 `
 
