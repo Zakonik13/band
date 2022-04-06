@@ -5,6 +5,8 @@ const typeDefs = gql`
     admins: [Admin]
     music: [Music]
     merch: [Merch]
+    images: [Image]
+    videos: [Video]
     tour: [Tour]
     news: [News]
     about: [About]
@@ -20,7 +22,19 @@ const typeDefs = gql`
   type Music {
     _id: ID!
     title: String!
-    source: String!
+    link: String!
+  }
+
+  type Image {
+    _id: ID!
+    title: String!
+    link: String!
+  }
+
+  type Video {
+    _id: ID!
+    title: String!
+    link: String!
   }
 
   type About {
@@ -94,6 +108,8 @@ const typeDefs = gql`
       link: String!
     ): Tour
     removeTourDate(_id: ID!): Tour
+    addImage(title: String!, link: String!): Image  
+    addVideo(title: String!, link: String!): Video
   }
 `;
 

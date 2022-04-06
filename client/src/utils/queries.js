@@ -11,7 +11,7 @@ export const GET_MERCH = gql`
       quantity
     }
   }
-`
+`;
 
 export const GET_TOUR_DATE = gql`
   query Tour {
@@ -23,7 +23,7 @@ export const GET_TOUR_DATE = gql`
       link
     }
   }
-`
+`;
 
 export const GET_NEWS = gql`
   query News {
@@ -34,7 +34,7 @@ export const GET_NEWS = gql`
       body
     }
   }
-`
+`;
 
 export const GET_ABOUT = gql`
   query About {
@@ -43,4 +43,24 @@ export const GET_ABOUT = gql`
       body
     }
   }
-`
+`;
+
+export const GET_IMAGES = gql`
+query Images {
+  images {
+    _id
+    title
+    link
+  }
+}
+`;
+
+export const GET_VIDEOS = gql`
+query Videos {
+  videos {
+    _id
+    title
+    link
+  }
+}
+`;

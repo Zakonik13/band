@@ -23,10 +23,10 @@ export const LOGIN_ADMIN = gql`
 `;
 
 export const ADD_MUSIC = gql`
-  mutation AddMusic($title: String!, $source: String!) {
-    addMusic(title: $title, source: $source) {
+  mutation AddMusic($title: String!, $link: String!) {
+    addMusic(title: $title, link: $link) {
       title
-      source
+      link
     }
   }
 `;
@@ -151,4 +151,24 @@ export const REMOVE_NEWS = gql`
       _id
     }
   }
+`;
+
+export const ADD_VIDEO = gql`
+mutation AddVideo($title: String!, $link: String!) {
+  addVideo(title: $title, link: $link) {
+    _id
+    title
+    link
+  }
+}
+`;
+
+export const ADD_IMAGE = gql`
+mutation AddVideo($title: String!, $link: String!) {
+  addVideo(title: $title, link: $link) {
+    _id
+    title
+    link
+  }
+}
 `;
