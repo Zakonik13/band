@@ -19,6 +19,11 @@
   src: url("../public/fonts/Champagne\ &\ Limousines.ttf");
 }
 
+@font-face {
+  font-family: Sans;
+  src: url("../public/fonts/SourceSansPro-Regular.ttf");
+}
+
 /* Navbar Styling */
 .navbar-title.navbar-brand {
   font-family: Bluegrass;
@@ -34,14 +39,14 @@
 
 .nav-link {
   font-family: Limo;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 300;
 }
 
 .nav-link:hover {
   margin-bottom: 15px;
   font-family: Limo;
-  font-size: 22px;
+  font-size: 25px;
 }
 
 /* Hero Styling */
@@ -119,7 +124,7 @@
   justify-content: center;
   height: 300px;
   width: 500px;
-  background-color: rgba(203, 216, 236, 0.712);
+  /* background-color: rgba(203, 216, 236, 0.712); */
   border-radius: 5px;
 }
 

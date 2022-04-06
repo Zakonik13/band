@@ -1,53 +1,69 @@
-import React, { useEffect, useState } from "react"
-import { UPDATE_TOUR } from "../utils/actions"
-import { useStoreContext } from "../utils/GlobalState"
-import { Button } from "react-bootstrap"
+import React, { useState } from "react";
+// import { useStoreContext } from "../utils/GlobalState"
+import { Button } from "react-bootstrap";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import { REMOVE_TOUR_DATE } from "../utils/mutations";
+import { GET_TOUR_DATE } from "../utils/queries";
+import Auth from "../utils/Auth.js";
 // Components
-import Page from "../components/Page"
-import AlertModal from "../components/AlertModal"
+import Page from "../components/Page";
+import AlertModal from "../components/AlertModal";
 
 const Tour = () => {
-  const [state, dispatch] = useStoreContext()
-  const { tours } = state
-  const [modalShow, setModalShow] = useState(false)
+  const { data, loading } = useQuery(GET_TOUR_DATE);
+  const [removeTourDate] = useMutation(REMOVE_TOUR_DATE);
+  // const [state, dispatch] = useStoreContext()
+  // const { tours } = state
+  const [modalShow, setModalShow] = useState(false);
+
+  if (loading) {
+    return "";
+  }
 
   let alertDetails = {
     title: "This tour date is sold out!",
-    ok: true
-  }
+    ok: true,
+  };
 
-  const tourData = [
-    {
-      Month: "January",
-      Date: "January 1st",
-      Location: "Lexington, Ky"
-    },
-    {
-      Month: "January",
-      Date: "January 7th",
-      Location: "Louisville, Ky"
-    },
-    {
-      Month: "January",
-      Date: "January 14th",
-      Location: "Nashville, Tn"
-    }
-  ]
+  const handleRemove = async (id) => {
+    await removeTourDate({
+      variables: { id },
+      refetchQueries: [{ query: GET_TOUR_DATE }],
+    });
+  };
 
-  const handleAlert = () => {
-    setModalShow(true)
-  }
+  // const tourData = [
+  //   {
+  //     Month: "January",
+  //     Date: "January 1st",
+  //     Location: "Lexington, Ky"
+  //   },
+  //   {
+  //     Month: "January",
+  //     Date: "January 7th",
+  //     Location: "Louisville, Ky"
+  //   },
+  //   {
+  //     Month: "January",
+  //     Date: "January 14th",
+  //     Location: "Nashville, Tn"
+  //   }
+  // ]
 
-  useEffect(() => {
-    //if data exist or has changed from the response of useQuery (not currently used), then run dispatch()
-    if (tourData) {
-      // execute our dispatch function with our action object indicating the type of action and the data to set our state for tours to
-      dispatch({
-        type: UPDATE_TOUR,
-        tours: tourData
-      })
-    }
-  }, [dispatch])
+  // const handleAlert = () => {
+  //   setModalShow(true)
+  // }
+
+  // useEffect(() => {
+  //   //if data exist or has changed from the response of useQuery (not currently used), then run dispatch()
+  //   if (tourData) {
+  //     // execute our dispatch function with our action object indicating the type of action and the data to set our state for tours to
+  //     dispatch({
+  //       type: UPDATE_TOUR,
+  //       tours: tourData
+  //     })
+  //   }
+  // }, [dispatch])
 
   return (
     <Page title={"Tour"}>
@@ -56,39 +72,52 @@ const Tour = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo"
+          fontFamily: "Limo",
         }}
       >
         <div>Tour</div>
-        <AlertModal alertDetails={alertDetails} show={modalShow} onHide={() => setModalShow(false)} />
+        <AlertModal
+          alertDetails={alertDetails}
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
       </div>
       <hr />
 
-      <div className="p-3">
-        <ul className="tour-list text-center" style={{ listStyleType: "none" }}>
-          <li>
-            <h4 style={{ paddingTop: "30px", fontFamily: "Limo" }}>5/17/22 @ KFC YUM Center Louisville, KY</h4>{" "}
-            <Button href="http://ticketmaster.com" target="_blank" size="sm" className="mt-3">
-              Buy Tickets
-            </Button>
-          </li>
-          <li>
-            <h4 style={{ paddingTop: "30px", fontFamily: "Limo" }}>5/28/22 @ Bridgestone Arena Nashville, TN</h4>{" "}
-            <Button variant="danger" size="sm" onClick={handleAlert} className="mt-3">
-              Sold Out
-            </Button>
-          </li>
-          <li>
-            <h4 style={{ paddingTop: "30px", fontFamily: "Limo" }}>6/9/22 @ Manchester, TN</h4>{" "}
-            <Button href="http://bonnaroo.com" target="_blank" size="sm" className="mt-3">
-              Buy Tickets
-            </Button>
-          </li>
-        </ul>
-      </div>
+      {data.tour.map((item) => {
+        return (
+          <center key={item._id}>
+            <div style={{ padding: "20px" }}>
+              <h4 style={{ fontFamily: "Limo" }}>
+                {item.date} @ {item.venue} , {item.location}
+              </h4>
+              {Auth.loggedIn() ? (
+                <Button
+                  onClick={() => handleRemove(item._id)}
+                  variant="outline-danger"
+                  size="sm"
+                  className="mt-3"
+                >
+                  Remove Date
+                </Button>
+              ) : (
+                <Button
+                  href={item.link}
+                  target="_blank"
+                  size="sm"
+                  className="mt-3"
+                >
+                  Buy Tickets
+                </Button>
+              )}
+            </div>
+          </center>
+        );
+      })}
+
       <hr />
     </Page>
-  )
-}
+  );
+};
 
-export default Tour
+export default Tour;
