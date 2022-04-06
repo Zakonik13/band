@@ -58,7 +58,7 @@ const News = () => {
       {!Auth.loggedIn() && (
         <div style={{ display: "flex", justifyContent: "end" }}>
           <Button onClick={handleModal} variant="outline-secondary" size="sm">
-            Subscribe
+            Subscribe to Newsletter
           </Button>
         </div>
       )}

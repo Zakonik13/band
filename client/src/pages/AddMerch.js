@@ -1,46 +1,58 @@
-import React, { useState } from "react"
-import Page from "../components/Page"
-import { Form, Button, InputGroup, FormControl, Container } from "react-bootstrap"
-import Auth from "../utils/Auth.js"
+import React, { useState } from "react";
+import Page from "../components/Page";
+import {
+  Form,
+  Button,
+  InputGroup,
+  FormControl,
+  Container
+} from "react-bootstrap";
+import Auth from "../utils/Auth.js";
 //Components
-import BackButton from "../components/BackButton"
-import AlertModal from "../components/AlertModal"
-import PictureUploader from "../components/PictureUploader"
-import { ADD_MERCH } from "../utils/mutations"
-import { useMutation } from "@apollo/react-hooks"
+import BackButton from "../components/BackButton";
+import AlertModal from "../components/AlertModal";
+import PictureUploader from "../components/PictureUploader";
+import { ADD_MERCH } from "../utils/mutations";
+import { useMutation } from "@apollo/react-hooks";
 
 const AddMerch = () => {
-  const [addMerch] = useMutation(ADD_MERCH)
-  const [modalShow, setModalShow] = useState(false)
-  const [image, setImage] = useState("")
+  const [addMerch] = useMutation(ADD_MERCH);
+  const [modalShow, setModalShow] = useState(false);
+  const [image, setImage] = useState("");
 
   let alertDetails = {
     title: "Do you want to add more merchandise?",
     back: "/merch",
     add: true
-  }
+  };
 
   const [state, setState] = useState({
     type: "",
     name: "",
     price: 0,
-    quantity: 0,
-  })
+    quantity: 0
+  });
 
   const handleAddMerch = async () => {
-    setModalShow(true)
+    setModalShow(true);
     await addMerch({
-      variables: { type: state.type, name: state.name, price: parseFloat(state.price), quantity: parseFloat(state.quantity), image: image }
-    })
-  }
+      variables: {
+        type: state.type,
+        name: state.name,
+        price: parseFloat(state.price),
+        quantity: parseFloat(state.quantity),
+        image: image
+      }
+    });
+  };
 
   const handleChange = event => {
-    const { name, value } = event.target
+    const { name, value } = event.target;
     setState({
       ...state,
       [name]: value
-    })
-  }
+    });
+  };
 
   // console.log(state)
 
@@ -60,7 +72,12 @@ const AddMerch = () => {
           </h1>
           <hr />
           <BackButton />
-          <AlertModal alertDetails={alertDetails} show={modalShow} setModalShow={setModalShow} onHide={() => setModalShow(false)} />
+          <AlertModal
+            alertDetails={alertDetails}
+            show={modalShow}
+            setModalShow={setModalShow}
+            onHide={() => setModalShow(false)}
+          />
           <Container
             style={{
               display: "flex",
@@ -71,7 +88,12 @@ const AddMerch = () => {
             <div>
               <Form.Group className="mb-3">
                 <Form.Label>What type of product are you adding?</Form.Label>
-                <Form.Select as="select" name="type" readOnly onChange={handleChange}>
+                <Form.Select
+                  as="select"
+                  name="type"
+                  readOnly
+                  onChange={handleChange}
+                >
                   <option>...</option>
                   <option>T-Shirt</option>
                   <option>Hat</option>
@@ -86,27 +108,41 @@ const AddMerch = () => {
                   justifyContent: "center"
                 }}
               >
-                <Form.Group className="mb-4">
-                  <PictureUploader setImage={setImage}/>
+                <Form.Group className="mb-2">
+                  <PictureUploader setImage={setImage} />
                 </Form.Group>
               </div>
 
               <Form.Group className="mb-4">
                 <Form.Label>Name of item</Form.Label>
-                <Form.Control placeholder="Enter item name..." name="name" onChange={handleChange} />
+                <Form.Control
+                  placeholder="Enter item name..."
+                  name="name"
+                  onChange={handleChange}
+                />
               </Form.Group>
 
               <Form.Group className="mb-4">
                 <Form.Label>Price of item</Form.Label>
                 <InputGroup className="mb-4">
                   <InputGroup.Text>$</InputGroup.Text>
-                  <FormControl onChange={handleChange} type="number" name="price" placeholder="Enter price..." />
+                  <FormControl
+                    onChange={handleChange}
+                    type="number"
+                    name="price"
+                    placeholder="Enter price..."
+                  />
                 </InputGroup>
               </Form.Group>
 
               <Form.Group className="mb-4">
                 <Form.Label>Quantity available</Form.Label>
-                <FormControl type="number" onChange={handleChange} name="quantity" placeholder="Enter quantity available..." />
+                <FormControl
+                  type="number"
+                  onChange={handleChange}
+                  name="quantity"
+                  placeholder="Enter quantity available..."
+                />
               </Form.Group>
             </div>
           </Container>
@@ -117,7 +153,11 @@ const AddMerch = () => {
               paddingTop: "20px"
             }}
           >
-            <Button className="mb-4" variant="outline-secondary" onClick={handleAddMerch}>
+            <Button
+              className="mb-4"
+              variant="outline-secondary"
+              onClick={handleAddMerch}
+            >
               Complete
             </Button>
           </div>
@@ -138,7 +178,7 @@ const AddMerch = () => {
         </Page>
       )}
     </>
-  )
-}
+  );
+};
 
-export default AddMerch
+export default AddMerch;
