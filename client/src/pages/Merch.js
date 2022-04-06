@@ -5,6 +5,7 @@ import { REMOVE_MERCH } from "../utils/mutations";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { Col, Button } from "react-bootstrap";
 import Auth from "../utils/Auth.js";
+import AlertModal from "../components/AlertModal";
 // Components
 import Page from "../components/Page";
 import { UPDATE_CART } from "../utils/actions";
@@ -16,10 +17,16 @@ const Merch = () => {
     name: "",
     price: "",
     quantity: "",
-    type: "",
+    type: ""
   });
   const { data, loading } = useQuery(GET_MERCH);
   const [removeMerch] = useMutation(REMOVE_MERCH);
+  const [modalShow, setModalShow] = useState(false);
+
+  let alertDetails = {
+    title: "Item successfully added to your cart.",
+    ok: true
+  };
 
   useEffect(() => {
     if (formState.name === "") {
@@ -27,15 +34,15 @@ const Merch = () => {
     } else {
       dispatch({
         type: UPDATE_CART,
-        cart: formState,
+        cart: formState
       });
     }
-  }, [formState]);
+  }, [formState, dispatch]);
 
-  const handleRemove = async (id) => {
+  const handleRemove = async id => {
     await removeMerch({
       variables: { id },
-      refetchQueries: [{ query: GET_MERCH }],
+      refetchQueries: [{ query: GET_MERCH }]
     });
   };
 
@@ -43,9 +50,10 @@ const Merch = () => {
     return "";
   }
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = event => {
+    // const { name, value } = event.target;
     let index = event.target.value;
+    setModalShow(true);
 
     setFormState({
       ...formState,
@@ -53,7 +61,7 @@ const Merch = () => {
       name: data.merch[index].name,
       price: data.merch[index].price,
       qty: data.merch[index].quantity,
-      type: data.merch[index].type,
+      type: data.merch[index].type
     });
   };
 
@@ -66,13 +74,18 @@ const Merch = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo",
+          fontFamily: "Limo"
         }}
       >
         <div>Merchandise</div>
       </div>
       <hr />
-
+      <AlertModal
+        alertDetails={alertDetails}
+        show={modalShow}
+        setModalShow={setModalShow}
+        onHide={() => setModalShow(false)}
+      />
       <Col>
         {data.merch.map((item, index) => {
           return (
@@ -81,7 +94,7 @@ const Merch = () => {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                padding: "20px",
+                padding: "20px"
               }}
             >
               <img

@@ -3,7 +3,7 @@ import { useStoreContext } from "../utils/GlobalState";
 import { Badge } from "react-bootstrap";
 
 const NavBadge = () => {
-  const [state, dispatch] = useStoreContext();
+  const [state] = useStoreContext();
   return (
     <Badge
       style={{ position: "relative", left: "7px", bottom: "10px" }}

@@ -19,6 +19,11 @@
   src: url("../public/fonts/Champagne\ &\ Limousines.ttf");
 }
 
+@font-face {
+  font-family: Sans;
+  src: url("../public/fonts/SourceSansPro-Regular.ttf");
+}
+
 /* Navbar Styling */
 .navbar-title.navbar-brand {
   font-family: Bluegrass;
