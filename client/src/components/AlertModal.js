@@ -8,16 +8,14 @@ import { ADD_SUBSCRIPTION } from "../utils/mutations";
 function AlertModal({ alertDetails, setModalShow, show, onHide }) {
   const [addSubscription] = useMutation(ADD_SUBSCRIPTION);
   const [state, setState] = useState({
-    email: "",
+    email: ""
   });
 
-  console.log(alertDetails);
-
-  const handleChange = (event) => {
+  const handleChange = event => {
     const { name, value } = event.target;
     setState({
       ...state,
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -25,8 +23,8 @@ function AlertModal({ alertDetails, setModalShow, show, onHide }) {
     try {
       await addSubscription({
         variables: {
-          email: state.email,
-        },
+          email: state.email
+        }
       });
       setModalShow(false);
     } catch (e) {
@@ -49,7 +47,7 @@ function AlertModal({ alertDetails, setModalShow, show, onHide }) {
                 display: "flex",
                 justifyContent: "center",
                 fontFamily: "Limo",
-                fontSize: "40px",
+                fontSize: "40px"
               }}
             >
               {alertDetails.title}
@@ -63,7 +61,7 @@ function AlertModal({ alertDetails, setModalShow, show, onHide }) {
             style={{
               display: "flex",
               justifyContent: "center",
-              fontFamily: "Limo",
+              fontFamily: "Limo"
             }}
           >
             {alertDetails.title}
@@ -94,7 +92,9 @@ function AlertModal({ alertDetails, setModalShow, show, onHide }) {
           ""
         )}
         {alertDetails.back ? (
-          <Button onClick={() => setModalShow(false)}>Close</Button>
+          <Button onClick={() => window.location.assign(alertDetails.back)}>
+            Close
+          </Button>
         ) : (
           ""
         )}
