@@ -5,7 +5,11 @@ import {
   Button,
   InputGroup,
   FormControl,
+<<<<<<< HEAD
   Container
+=======
+  Container,
+>>>>>>> 0617a801341f2fbac0d83ddb5cf206cc5aed3425
 } from "react-bootstrap";
 import Auth from "../utils/Auth.js";
 //Components
@@ -23,14 +27,22 @@ const AddMerch = () => {
   let alertDetails = {
     title: "Do you want to add more merchandise?",
     back: "/merch",
+<<<<<<< HEAD
     add: true
+=======
+    add: true,
+>>>>>>> 0617a801341f2fbac0d83ddb5cf206cc5aed3425
   };
 
   const [state, setState] = useState({
     type: "",
     name: "",
     price: 0,
+<<<<<<< HEAD
     quantity: 0
+=======
+    quantity: 0,
+>>>>>>> 0617a801341f2fbac0d83ddb5cf206cc5aed3425
   });
 
   const handleAddMerch = async () => {
@@ -41,6 +53,7 @@ const AddMerch = () => {
         name: state.name,
         price: parseFloat(state.price),
         quantity: parseFloat(state.quantity),
+<<<<<<< HEAD
         image: image
       }
     });
@@ -55,6 +68,20 @@ const AddMerch = () => {
   };
 
   // console.log(state)
+=======
+        image: image,
+      },
+    });
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setState({
+      ...state,
+      [name]: value,
+    });
+  };
+>>>>>>> 0617a801341f2fbac0d83ddb5cf206cc5aed3425
 
   return (
     <>
@@ -65,7 +92,7 @@ const AddMerch = () => {
             style={{
               display: "flex",
               justifyContent: "center",
-              fontFamily: "Limo"
+              fontFamily: "Limo",
             }}
           >
             Add Merchandise
@@ -82,7 +109,7 @@ const AddMerch = () => {
             style={{
               display: "flex",
               justifyContent: "center",
-              paddingTop: "30px"
+              paddingTop: "30px",
             }}
           >
             <div>
@@ -105,10 +132,14 @@ const AddMerch = () => {
               <div
                 style={{
                   display: "flex",
-                  justifyContent: "center"
+                  justifyContent: "center",
                 }}
               >
+<<<<<<< HEAD
                 <Form.Group className="mb-2">
+=======
+                <Form.Group className="mb-4">
+>>>>>>> 0617a801341f2fbac0d83ddb5cf206cc5aed3425
                   <PictureUploader setImage={setImage} />
                 </Form.Group>
               </div>
@@ -150,7 +181,7 @@ const AddMerch = () => {
             style={{
               display: "flex",
               justifyContent: "center",
-              paddingTop: "20px"
+              paddingTop: "20px",
             }}
           >
             <Button
@@ -170,7 +201,7 @@ const AddMerch = () => {
               fontFamily: "Limo",
               display: "flex",
               justifyContent: "center",
-              fontSize: "30px"
+              fontSize: "30px",
             }}
           >
             You must be logged in as admin to access this page.

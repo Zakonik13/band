@@ -22,13 +22,13 @@ const Tour = () => {
 
   let alertDetails = {
     title: "This tour date is sold out!",
-    ok: true
+    ok: true,
   };
 
-  const handleRemove = async id => {
+  const handleRemove = async (id) => {
     await removeTourDate({
       variables: { id },
-      refetchQueries: [{ query: GET_TOUR_DATE }]
+      refetchQueries: [{ query: GET_TOUR_DATE }],
     });
   };
 
@@ -72,7 +72,7 @@ const Tour = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo"
+          fontFamily: "Limo",
         }}
       >
         <div>Tour</div>
@@ -84,7 +84,7 @@ const Tour = () => {
       </div>
       <hr />
 
-      {data.tour.map(item => {
+      {data.tour.map((item) => {
         return (
           <center key={item._id}>
             <div style={{ padding: "20px" }}>
