@@ -12,3 +12,22 @@ export const GET_MERCH = gql`
     }
   }
 `
+export const GET_IMAGES = gql`
+query Images {
+  images {
+    _id
+    title
+    link
+  }
+}
+`
+
+export const GET_VIDEOS = gql`
+query Videos {
+  videos {
+    _id
+    title
+    link
+  }
+}
+`

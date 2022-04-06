@@ -56,3 +56,23 @@ export const UPDATE_MERCH = gql`
     }
   }
 `
+
+export const ADD_VIDEO = gql`
+mutation AddVideo($title: String!, $link: String!) {
+  addVideo(title: $title, link: $link) {
+    _id
+    title
+    link
+  }
+}
+`
+
+export const ADD_IMAGE = gql`
+mutation AddVideo($title: String!, $link: String!) {
+  addVideo(title: $title, link: $link) {
+    _id
+    title
+    link
+  }
+}
+`

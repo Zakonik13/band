@@ -15,6 +15,12 @@ const resolvers = {
     },
     merch: async () => {
       return Merch.find()
+    },
+    images: async () => {
+      return Image.find()
+    },
+    videos: async () => {
+      return Video.find()
     }
   },
   Mutation: {

@@ -5,6 +5,8 @@ const typeDefs = gql`
     admins: [Admin]
     music: [Music]
     merch: [Merch]
+    images: [Image]
+    videos: [Video]
   }
 
   type Admin {
@@ -14,6 +16,18 @@ const typeDefs = gql`
   }
 
   type Music {
+    _id: ID!
+    title: String!
+    link: String!
+  }
+
+  type Image {
+    _id: ID!
+    title: String!
+    link: String!
+  }
+
+  type Video {
     _id: ID!
     title: String!
     link: String!
