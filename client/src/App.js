@@ -28,16 +28,16 @@ import AddTourDate from "./pages/AddTourDate";
 import EditAbout from "./pages/EditAbout";
 
 const client = new ApolloClient({
-  request: (operation) => {
+  request: operation => {
     const token = localStorage.getItem("id_token");
 
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : "",
-      },
+        authorization: token ? `Bearer ${token}` : ""
+      }
     });
   },
-  uri: "/graphql",
+  uri: "/graphql"
 });
 
 function App() {
@@ -48,20 +48,15 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
-
             <Route path="/news" element={<News />} />
             <Route path="/add-news" element={<AddNews />} />
-
             <Route path="/about" element={<About />} />
             <Route path="/edit-about" element={<EditAbout />} />
-
             <Route path="/merch" element={<Merch />} />
             <Route path="/add-merch" element={<AddMerch />} />
-            <Route path="/merch-details" element={<MerchDetails />} />
-
+            <Route path="/merch-details/:id" element={<MerchDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/media" element={<Media />} />
-
             <Route path="/add-tour-date" element={<AddTourDate />} />
             <Route path="/tour" element={<Tour />} />
             <Route path="/images" element={<Images />} />

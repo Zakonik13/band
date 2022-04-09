@@ -1,14 +1,15 @@
-import React from "react"
-import { Navbar, Nav, Container } from "react-bootstrap"
-import Auth from "../utils/Auth.js"
+import React from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import Auth from "../utils/Auth.js";
+
 //Components
-import NavBadge from "./NavBadge.js"
+import NavBadge from "./NavBadge.js";
 
 const NavBar = () => {
   const handleLogOut = event => {
-    event.preventDefault()
-    Auth.logout()
-  }
+    event.preventDefault();
+    Auth.logout();
+  };
 
   return (
     <Navbar bg="light" expand="lg">
@@ -32,12 +33,20 @@ const NavBar = () => {
             </div>
             <Nav.Link href="/tour">Tour</Nav.Link>
             <Nav.Link href="/news">News</Nav.Link>
-            <Nav.Link href="/cart">
-              Cart
-              <NavBadge></NavBadge>
-            </Nav.Link>
+            {Auth.loggedIn() ? (
+              <Nav.Link disabled>Cart</Nav.Link>
+            ) : (
+              <Nav.Link href="/cart">
+                Cart
+                <NavBadge />
+              </Nav.Link>
+            )}
             {Auth.loggedIn() && (
-              <Nav.Link style={{ color: "blue" }} href="/" onClick={handleLogOut}>
+              <Nav.Link
+                style={{ color: "blue" }}
+                href="/"
+                onClick={handleLogOut}
+              >
                 Logout
               </Nav.Link>
             )}
@@ -45,7 +54,7 @@ const NavBar = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
