@@ -19,10 +19,10 @@ const News = () => {
 
   let alertDetails = {
     title: "Subscribe to our Newsletter !",
-    back: "/news",
     add: false,
     email: true,
-    submit: true
+    submit: true,
+    noThanks: true
   };
 
   const handleModal = () => {

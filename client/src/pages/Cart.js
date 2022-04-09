@@ -92,7 +92,7 @@ const Cart = () => {
                 <center>
                   <h4
                     style={{
-                      fontSize: "30px",
+                      fontSize: "25px",
                       paddingLeft: "10px",
                       fontFamily: "Sans"
                     }}
@@ -181,8 +181,9 @@ const Cart = () => {
         }}
       >
         <Button
+          variant="outline-secondary"
           style={{
-            marginTop: "20px"
+            marginTop: "15px"
           }}
         >
           Checkout
