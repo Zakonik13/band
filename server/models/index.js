@@ -9,4 +9,4 @@ const Subscription = require("./Subscription");
 const Image = require('./Image');
 const Video = require('./Video');
 
-module.exports = { Admin, Music, Merch, Tour, News, About, Subscription };
+module.exports = { Admin, Music, Merch, Tour, News, About, Subscription, Video, Image };

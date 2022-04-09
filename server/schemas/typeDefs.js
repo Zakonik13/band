@@ -11,6 +11,7 @@ const typeDefs = gql`
     news: [News]
     about: [About]
     subscription: [Subscription]
+    merchById(_id: String!): Merch
   }
 
   type Admin {
