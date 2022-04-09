@@ -117,9 +117,18 @@ export const UPDATE_MERCH = gql`
   }
 `;
 
+export const ADD_ABOUT = gql`
+  mutation AddAbout($body: String!) {
+    addAbout(body: $body) {
+      _id
+      body
+    }
+  }
+`;
+
 export const UPDATE_ABOUT = gql`
-  mutation UpdateAbout($id: ID!, $body: String!) {
-    updateAbout(_id: $id, body: $body) {
+  mutation UpdateAbout($_id: ID!, $body: String!) {
+    updateAbout(_id: $_id, body: $body) {
       _id
       body
     }
@@ -154,21 +163,21 @@ export const REMOVE_NEWS = gql`
 `;
 
 export const ADD_VIDEO = gql`
-mutation AddVideo($title: String!, $link: String!) {
-  addVideo(title: $title, link: $link) {
-    _id
-    title
-    link
+  mutation AddVideo($title: String!, $link: String!) {
+    addVideo(title: $title, link: $link) {
+      _id
+      title
+      link
+    }
   }
-}
 `;
 
 export const ADD_IMAGE = gql`
-mutation AddVideo($title: String!, $link: String!) {
-  addVideo(title: $title, link: $link) {
-    _id
-    title
-    link
+  mutation AddVideo($title: String!, $link: String!) {
+    addVideo(title: $title, link: $link) {
+      _id
+      title
+      link
+    }
   }
-}
 `;

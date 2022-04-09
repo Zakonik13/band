@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import gql from "graphql-tag";
 
 export const GET_MERCH = gql`
   query Merch {
@@ -46,21 +46,34 @@ export const GET_ABOUT = gql`
 `;
 
 export const GET_IMAGES = gql`
-query Images {
-  images {
-    _id
-    title
-    link
+  query Images {
+    images {
+      _id
+      title
+      link
+    }
   }
-}
 `;
 
 export const GET_VIDEOS = gql`
-query Videos {
-  videos {
-    _id
-    title
-    link
+  query Videos {
+    videos {
+      _id
+      title
+      link
+    }
   }
-}
+`;
+
+export const GET_MERCH_BY_ID = gql`
+  query MerchById($_id: String!) {
+    merchById(_id: $_id) {
+      _id
+      name
+      type
+      image
+      quantity
+      price
+    }
+  }
 `;
