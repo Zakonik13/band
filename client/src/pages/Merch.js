@@ -6,6 +6,7 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import { Col, Button } from "react-bootstrap";
 import Auth from "../utils/Auth.js";
 import AlertModal from "../components/AlertModal";
+
 // Components
 import Page from "../components/Page";
 import { UPDATE_CART } from "../utils/actions";
@@ -19,9 +20,11 @@ const Merch = () => {
     quantity: "",
     type: ""
   });
-  const { data, loading } = useQuery(GET_MERCH);
+
   const [removeMerch] = useMutation(REMOVE_MERCH);
   const [modalShow, setModalShow] = useState(false);
+
+  const { data, loading } = useQuery(GET_MERCH);
 
   let alertDetails = {
     title: "Item successfully added to your cart.",
@@ -30,7 +33,7 @@ const Merch = () => {
 
   useEffect(() => {
     if (formState.name === "") {
-      console.log("No items");
+      console.log("No Items");
     } else {
       dispatch({
         type: UPDATE_CART,
@@ -65,8 +68,6 @@ const Merch = () => {
     });
   };
 
-  console.log(state, formState);
-
   return (
     <Page title={"Merch"}>
       <div
@@ -97,12 +98,14 @@ const Merch = () => {
                 padding: "20px"
               }}
             >
-              <img
-                className="merch-link"
-                style={{ height: "200px", width: "auto" }}
-                src={item.image}
-                alt=""
-              />
+              <a href={`/merch-details/${item._id}`}>
+                <img
+                  className="merch-link"
+                  style={{ height: "200px", width: "auto" }}
+                  src={item.image}
+                  alt=""
+                />
+              </a>
               <div style={{ paddingTop: "10px", margin: "15px" }}>
                 <div>
                   <center>

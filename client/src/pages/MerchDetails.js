@@ -1,13 +1,24 @@
-import React from "react"
-import { Button } from "react-bootstrap"
+import React from "react";
+import { Button } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/react-hooks";
+import { GET_MERCH } from "../utils/queries";
 //Components
-import BackButton from "../components/BackButton"
+import BackButton from "../components/BackButton";
 //Images
-import hat from "../images/hat.jpg"
+import hat from "../images/hat.jpg";
 
 const MerchDetails = () => {
+  let { id } = useParams();
+  const { data: merchData } = useQuery(GET_MERCH, {
+    variables: { _id: id }
+  });
+
+  console.log(id);
+  console.log(merchData);
+
   function handleAlert() {
-    alert("Unfortunately this item is SOLD OUT")
+    alert("Unfortunately this item is SOLD OUT");
   }
 
   return (
@@ -65,7 +76,7 @@ const MerchDetails = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default MerchDetails
+export default MerchDetails;
