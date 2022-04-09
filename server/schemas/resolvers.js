@@ -6,8 +6,8 @@ const { Tour } = require("../models");
 const { News } = require("../models");
 const { About } = require("../models");
 const { Subscription } = require("../models");
-const { Image } = require("../models")
-const { Video } = require("../models")
+const { Image } = require("../models");
+const { Video } = require("../models");
 
 const resolvers = {
   Query: {
@@ -31,13 +31,13 @@ const resolvers = {
     },
     subscription: async () => {
       return Subscription.find();
-
     },
-      images: async () => {
-      return Image.find()
+    images: async () => {
+      return Image.find();
     },
     videos: async () => {
-      return Video.find()
+      return Video.find();
+    },
   },
   Mutation: {
     addAdmin: async (parent, args) => {
@@ -104,7 +104,6 @@ const resolvers = {
     removeNews: async (parent, { _id }) => {
       await News.findOneAndDelete({ _id });
     },
-
     updateMerch: async (parent, { _id, name, image, price, quantity }) => {
       const merch = await Merch.findOneAndUpdate(
         { _id },
@@ -113,7 +112,7 @@ const resolvers = {
           type: type,
           quantity: quantity,
           price: price,
-          image: image
+          image: image,
         },
         { new: true }
       );
@@ -124,7 +123,7 @@ const resolvers = {
       const about = await About.findOneAndUpdate(
         { _id },
         {
-          body: body
+          body: body,
         },
         { new: true }
       );
@@ -132,16 +131,16 @@ const resolvers = {
       return about;
     },
     addImage: async (parent, args) => {
-      const image = await Image.create(args)
+      const image = await Image.create(args);
 
-      return image
+      return image;
     },
     addVideo: async (parent, args) => {
-      const video = await Video.create(args)
+      const video = await Video.create(args);
 
-      return video
+      return video;
     },
-  }
+  },
 };
 
 module.exports = resolvers;
