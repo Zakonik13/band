@@ -6,8 +6,8 @@ const { Tour } = require("../models");
 const { News } = require("../models");
 const { About } = require("../models");
 const { Subscription } = require("../models");
-const { Image } = require("../models")
-const { Video } = require("../models")
+const { Image } = require("../models");
+const { Video } = require("../models");
 
 const resolvers = {
   Query: {
@@ -31,13 +31,13 @@ const resolvers = {
     },
     subscription: async () => {
       return Subscription.find();
-
     },
-      images: async () => {
-      return Image.find()
+    images: async () => {
+      return Image.find();
     },
     videos: async () => {
-      return Video.find()
+      return Video.find();
+    }
   },
   Mutation: {
     addAdmin: async (parent, args) => {
@@ -132,15 +132,15 @@ const resolvers = {
       return about;
     },
     addImage: async (parent, args) => {
-      const image = await Image.create(args)
+      const image = await Image.create(args);
 
-      return image
+      return image;
     },
     addVideo: async (parent, args) => {
-      const video = await Video.create(args)
+      const video = await Video.create(args);
 
-      return video
-    },
+      return video;
+    }
   }
 };
 

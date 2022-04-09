@@ -98,6 +98,11 @@ function AlertModal({ alertDetails, setModalShow, show, onHide }) {
         ) : (
           ""
         )}
+        {alertDetails.noThanks ? (
+          <Button onClick={onHide}>No Thanks</Button>
+        ) : (
+          ""
+        )}
         {alertDetails.ok ? <Button onClick={onHide}>OK</Button> : ""}
       </Modal.Footer>
     </Modal>
