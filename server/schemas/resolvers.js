@@ -122,6 +122,12 @@ const resolvers = {
       const video = await Video.create(args);
       return video;
     },
+    removeImage: async (parent, { _id }) => {
+      await Image.findOneAndDelete({ _id });
+    },
+    removeVideo: async (parent, { _id }) => {
+      await Video.findOneAndDelete({ _id });
+    },
   },
 };
 module.exports = resolvers;

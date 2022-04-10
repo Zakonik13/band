@@ -172,12 +172,28 @@ export const ADD_VIDEO = gql`
   }
 `;
 
+export const REMOVE_VIDEO = gql`
+  mutation RemoveVideo($_id: ID!) {
+    removeVideo(_id: $_id) {
+      _id
+    }
+  }
+`;
+
 export const ADD_IMAGE = gql`
   mutation AddVideo($title: String!, $link: String!) {
     addVideo(title: $title, link: $link) {
       _id
       title
       link
+    }
+  }
+`;
+
+export const REMOVE_IMAGE = gql`
+  mutation RemoveImage($_id: ID!) {
+    removeImage(_id: $_id) {
+      _id
     }
   }
 `;
