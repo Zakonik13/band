@@ -20,6 +20,30 @@ const httpServer = http.createServer(app);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+// Creates session for user payment
+app.post("/create-checkout-session", async (req, res) => {
+  console.log(req);
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: "Merchandise",
+          },
+          unit_amount: req.body.amount,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: "payment",
+    success_url: `http://localhost:3000/success/${req.body.id}`,
+    cancel_url: "http://localhost:3000/profile",
+  });
+
+  res.json({ url: session.url });
+});
+
 async function startApolloServer(typeDefs, resolvers) {
   // Same ApolloServer initialization as before, plus the drain plugin
   // creates a new Apollo server and passes in our schema data
