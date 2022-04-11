@@ -11,6 +11,7 @@ const typeDefs = gql`
     news: [News]
     about: [About]
     subscription: [Subscription]
+    merchById(_id: String!): Merch
   }
 
   type Admin {
@@ -108,8 +109,10 @@ const typeDefs = gql`
       link: String!
     ): Tour
     removeTourDate(_id: ID!): Tour
-    addImage(title: String!, link: String!): Image  
+    addImage(title: String!, link: String!): Image
     addVideo(title: String!, link: String!): Video
+    removeImage(_id: ID!): Image
+    removeVideo(_id: ID!): Video
   }
 `;
 
