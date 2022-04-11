@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Page from "../components/Page";
 import { Button, Container } from "react-bootstrap";
 import { useMutation } from "@apollo/react-hooks";
-import { UPDATE_ABOUT } from "../utils/mutations";
+import { UPDATE_ABOUT, ADD_ABOUT } from "../utils/mutations";
 import { GET_ABOUT } from "../utils/queries";
 import { useQuery } from "@apollo/react-hooks";
 
@@ -12,19 +12,18 @@ import AlertModal from "../components/AlertModal";
 
 const EditAbout = () => {
   const [modalShow, setModalShow] = useState(false);
-  const { data, loading } = useQuery(GET_ABOUT);
+  const { loading, data } = useQuery(GET_ABOUT);
   const [updateAbout] = useMutation(UPDATE_ABOUT);
+  const [addAbout] = useMutation(ADD_ABOUT);
 
   const [state, setState] = useState({
-    body: ""
+    body: "",
   });
-
-  console.log(data);
 
   let alertDetails = {
     title: "Do you want to keep editing?",
     back: "/about",
-    add: true
+    add: true,
   };
 
   if (loading) {
@@ -32,17 +31,22 @@ const EditAbout = () => {
   }
 
   const handleUpdate = async () => {
-    await updateAbout({
-      variables: { body: state.body, id: data.about[0]._id }
-    });
-    setModalShow(true);
+    if (data.about.length === 0) {
+      await addAbout({ body: state.body });
+    } else {
+      await updateAbout({
+        variables: { body: state.body, _id: data.about[0]._id },
+      });
+    }
+    //is modal needed ?//
+    // setModalShow(true);
   };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setState({
       ...state,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -55,7 +59,7 @@ const EditAbout = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          fontFamily: "Limo"
+          fontFamily: "Limo",
         }}
       >
         Edit About
@@ -72,7 +76,7 @@ const EditAbout = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          paddingTop: "30px"
+          paddingTop: "30px",
         }}
       >
         <div>
@@ -94,11 +98,11 @@ const EditAbout = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          paddingTop: "20px"
+          paddingTop: "20px",
         }}
       >
         <Button
-          onClick={() => handleUpdate(data._id)}
+          onClick={() => handleUpdate()}
           className="mb-4"
           variant="outline-secondary"
         >
