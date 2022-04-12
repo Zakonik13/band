@@ -17,5 +17,5 @@ module.exports = {
   About,
   Subscription,
   Image,
-  Video
+  Video,
 };
