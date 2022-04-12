@@ -13,6 +13,10 @@ const db = require("./config/connection");
 
 const PORT = process.env.PORT || 3001;
 
+const stripe = require("stripe")(
+  "sk_test_51KnmF8G5CIkrVNkRHpHvgnb4HpKK0hWhoIDZI4hwhKuq87eFzzuGPtJ4GUq51mtCFVcZSgfom9dtfmy0RkcxBIEY003IJfDbQ0"
+);
+
 // require logic for integrating with Express
 const app = express();
 const httpServer = http.createServer(app);
@@ -22,26 +26,26 @@ app.use(express.json());
 
 // Creates session for user payment
 app.post("/create-checkout-session", async (req, res) => {
-  console.log(req);
-  const session = await stripe.checkout.sessions.create({
-    line_items: [
-      {
-        price_data: {
-          currency: "usd",
-          product_data: {
-            name: "Merchandise",
-          },
-          unit_amount: req.body.amount,
-        },
-        quantity: 1,
-      },
-    ],
-    mode: "payment",
-    success_url: `http://localhost:3000/success/${req.body.id}`,
-    cancel_url: "http://localhost:3000/profile",
-  });
+  console.log(typeof req.body.amount);
+  // const session = await stripe.checkout.sessions.create({
+  //   line_items: [
+  //     {
+  //       price_data: {
+  //         currency: "usd",
+  //         product_data: {
+  //           name: "Transportation Service",
+  //         },
+  //         unit_amount: parseInt(req.body.amount),
+  //       },
+  //       quantity: 1,
+  //     },
+  //   ],
+  //   mode: "payment",
+  //   success_url: `http://localhost:3000/success/${req.body.id}`,
+  //   cancel_url: "http://localhost:3000/profile",
+  // });
 
-  res.json({ url: session.url });
+  // res.json({ url: session.url });
 });
 
 async function startApolloServer(typeDefs, resolvers) {

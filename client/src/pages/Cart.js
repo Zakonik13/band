@@ -13,22 +13,6 @@ const Cart = () => {
   const cart = state.cart;
   const total = [];
 
-  const handleCheckout = async () => {
-    const response = await axios({
-      method: "post",
-      url: "/create-checkout-session",
-      // map thru cart to build data for Stripe
-      data: cart.map((item) => {
-        return {
-          amount: item.price,
-          type: item.type,
-        };
-      }),
-    });
-
-    window.location.href = response.data.url;
-  };
-
   const handleRemove = (event) => {
     dispatch({
       type: REMOVE_FROM_CART,
@@ -48,6 +32,28 @@ const Cart = () => {
   const tax = parseFloat((cartTotal * 0.0925).toFixed(2));
 
   const totalWithTax = cartTotal + tax;
+
+  const handleCheckout = async (event) => {
+    event.preventDefault();
+
+    const response = await axios({
+      method: "post",
+      url: "/create-checkout-session",
+      data: {
+        amount: totalWithTax,
+        id: 1,
+      },
+      //   // map thru cart to build data for Stripe
+      //   // data: cart.map((item) => {
+      //   //   return {
+      //   //     amount: item.price,
+      //   //     type: item.type,
+      //   //   };
+      //   // }),
+    });
+
+    window.location.href = response.data.url;
+  };
 
   let alertDetails = {
     title: "Item has been removed from your cart.",
