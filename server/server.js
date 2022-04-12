@@ -26,26 +26,25 @@ app.use(express.json());
 
 // Creates session for user payment
 app.post("/create-checkout-session", async (req, res) => {
-  console.log(typeof req.body.amount);
-  // const session = await stripe.checkout.sessions.create({
-  //   line_items: [
-  //     {
-  //       price_data: {
-  //         currency: "usd",
-  //         product_data: {
-  //           name: "Transportation Service",
-  //         },
-  //         unit_amount: parseInt(req.body.amount),
-  //       },
-  //       quantity: 1,
-  //     },
-  //   ],
-  //   mode: "payment",
-  //   success_url: `http://localhost:3000/success/${req.body.id}`,
-  //   cancel_url: "http://localhost:3000/profile",
-  // });
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: "Merchandise",
+          },
+          unit_amount: amount,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: "payment",
+    success_url: `http://localhost:3000/success/${req.body.id}`,
+    cancel_url: "http://localhost:3000/profile",
+  });
 
-  // res.json({ url: session.url });
+  res.json({ url: session.url });
 });
 
 async function startApolloServer(typeDefs, resolvers) {
