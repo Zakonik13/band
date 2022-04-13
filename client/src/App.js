@@ -26,18 +26,19 @@ import AddNews from "./pages/AddNews";
 import AdminEdit from "./pages/AdminEdit";
 import AddTourDate from "./pages/AddTourDate";
 import EditAbout from "./pages/EditAbout";
+import Success from "./pages/Success";
 
 const client = new ApolloClient({
-  request: operation => {
+  request: (operation) => {
     const token = localStorage.getItem("id_token");
 
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : ""
-      }
+        authorization: token ? `Bearer ${token}` : "",
+      },
     });
   },
-  uri: "/graphql"
+  uri: "/graphql",
 });
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
             <Route path="/create-new-admin-user" element={<AdminSignup />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin-edit" element={<AdminEdit />} />
+            <Route path="/success" element={<Success />} />
           </Routes>
           <Footer />
         </StoreProvider>
