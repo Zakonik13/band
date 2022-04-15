@@ -1,55 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 //Images
 import mail from "../images/mail.svg";
-import { useMutation } from "@apollo/react-hooks";
-import { ADD_SUBSCRIPTION } from "../utils/mutations";
-import emailjs from "@emailjs/browser";
 
-function AlertModal({ alertDetails, setModalShow, show, onHide }) {
-  const [addSubscription] = useMutation(ADD_SUBSCRIPTION);
-  const [state, setState] = useState({
-    name: "",
-    email: "",
-    message: "Thank you for signing up to our newsletter!",
-  });
-
+function AlertModal({
+  alertDetails,
+  setModalShow,
+  show,
+  onHide,
+  email,
+  setEmail,
+  handleAddSubscription,
+}) {
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setState({
-      ...state,
+    setEmail({
+      ...email,
       [name]: value,
     });
-  };
-
-  const handleAddSubscription = async () => {
-    try {
-      await addSubscription({
-        variables: {
-          name: state.name,
-          email: state.email,
-          message: state.message,
-        },
-      });
-      await emailjs
-        .send(
-          "service_rhwnuvu",
-          "template_iic2uof",
-          { name: state.name, email: state.email, message: state.message },
-          "user_VX87bNMDuxlz9E5XfnclG"
-        )
-        .then(
-          ((result) => {
-            console.log(result.text);
-          },
-          (error) => {
-            console.log(error.text);
-          })
-        );
-      setModalShow(false);
-    } catch (e) {
-      alert("You must provide a valid email address.");
-    }
   };
 
   return (
@@ -60,7 +28,7 @@ function AlertModal({ alertDetails, setModalShow, show, onHide }) {
       centered
     >
       <Modal.Body>
-        {alertDetails.email === true ? (
+        {alertDetails.email ? (
           <>
             <h4
               style={{

@@ -1,16 +1,16 @@
-import React from "react"
+import React from "react";
 // import { Link } from "react-router-dom"
-import { SocialIcon } from "react-social-icons"
-import Auth from "../utils/Auth"
+import { SocialIcon } from "react-social-icons";
+import Auth from "../utils/Auth";
 
 const Footer = () => {
   return (
     <div className="footer-content">
       <footer className="text-center small text-muted ">
         <div className="mb-2">
-          <SocialIcon className="social m-1" url="https://www.linkedin.com/in/alexlehr" />
-          <SocialIcon className="social m-1" url="https://www.facebook.com/alex.lehr.75" />
-          <SocialIcon className="social m-1" url="https://instagram.com/alehr45/" />
+          <SocialIcon className="social m-1" url="https://www.linkedin.com/" />
+          <SocialIcon className="social m-1" url="https://www.facebook.com" />
+          <SocialIcon className="social m-1" url="https://instagram.com/" />
         </div>
         <small>
           <p className="m-0">
@@ -24,7 +24,11 @@ const Footer = () => {
         {!Auth.loggedIn() ? (
           <small>
             <p>
-              <a style={{ textDecoration: "none" }} href="/admin" className="text-muted">
+              <a
+                style={{ textDecoration: "none" }}
+                href="/admin"
+                className="text-muted"
+              >
                 Admin Log In
               </a>
             </p>
@@ -34,7 +38,7 @@ const Footer = () => {
         )}
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

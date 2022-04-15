@@ -75,7 +75,7 @@ const PictureUploader = ({ setImage }) => {
 
       <Button variant="outline-secondary" onClick={handleUpload}>
         <div>{renderPreview()}</div>
-        Add Item Image
+        Add Image
       </Button>
     </div>
   );

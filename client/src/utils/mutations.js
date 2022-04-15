@@ -182,8 +182,8 @@ export const REMOVE_VIDEO = gql`
 `;
 
 export const ADD_IMAGE = gql`
-  mutation AddVideo($title: String!, $link: String!) {
-    addVideo(title: $title, link: $link) {
+  mutation AddImage($title: String!, $link: String!) {
+    addImage(title: $title, link: $link) {
       _id
       title
       link
