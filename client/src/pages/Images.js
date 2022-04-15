@@ -1,33 +1,26 @@
-import React from "react"
-import ImageGallery from "react-image-gallery"
+import React from "react";
+import ImageGallery from "react-image-gallery";
 //Components
-import BackButton from "../components/BackButton"
-import Page from "../components/Page"
-//Images
-import band1 from "../images/band1.jpg"
-import band2 from "../images/band2.jpg"
-import band3 from "../images/band3.jpg"
-import band4 from "../images/band4.jpg"
+import BackButton from "../components/BackButton";
+import Page from "../components/Page";
+
+//Queries
+import { GET_IMAGES } from "../utils/queries";
+import { useQuery } from "@apollo/react-hooks";
 
 const Images = () => {
-  const images = [
-    {
-      original: band1,
-      thumbnail: band1
-    },
-    {
-      original: band2,
-      thumbnail: band2
-    },
-    {
-      original: band3,
-      thumbnail: band3
-    },
-    {
-      original: band4,
-      thumbnail: band4
-    }
-  ]
+  const { data, loading } = useQuery(GET_IMAGES);
+
+  const images = data?.images.map(image => {
+    return { original: image.link, thumbnail: image.link };
+  });
+
+  if (loading) {
+    return "";
+  }
+
+  console.log(images);
+
   return (
     <Page title={"Images"}>
       <div>
@@ -53,7 +46,7 @@ const Images = () => {
         </div>
       </div>
     </Page>
-  )
-}
+  );
+};
 
-export default Images
+export default Images;

@@ -1,7 +1,7 @@
-import React from "react"
-import { Row } from "react-bootstrap"
+import React from "react";
+import { Row } from "react-bootstrap";
 //Components
-import Page from "../components/Page"
+import Page from "../components/Page";
 
 const AdminEdit = () => {
   return (
@@ -19,31 +19,65 @@ const AdminEdit = () => {
       </div>
       <hr />
 
-      <Row style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
+      <Row
+        style={{ display: "flex", justifyContent: "center", padding: "20px" }}
+      >
         <div className="p-3">
           <a style={{ textDecoration: "none" }} href="/add-merch">
-            <h3 style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }} className="text-center text-muted">
+            <h3
+              style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }}
+              className="text-center text-muted"
+            >
               Add Merch
             </h3>
           </a>
         </div>
         <div className="p-3">
           <a style={{ textDecoration: "none" }} href="/add-tour-date">
-            <h3 style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }} className="text-center text-muted">
+            <h3
+              style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }}
+              className="text-center text-muted"
+            >
               Add Tour Date
             </h3>
           </a>
         </div>
         <div className="p-3">
           <a style={{ textDecoration: "none" }} href="/add-news">
-            <h3 style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }} className="text-center text-muted">
+            <h3
+              style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }}
+              className="text-center text-muted"
+            >
               Add News
             </h3>
           </a>
         </div>
         <div className="p-3">
+          <a style={{ textDecoration: "none" }} href="/add-remove-image">
+            <h3
+              style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }}
+              className="text-center text-muted"
+            >
+              Add / Remove Images
+            </h3>
+          </a>
+        </div>
+        <div className="p-3">
+          <a style={{ textDecoration: "none" }} href="/add-video">
+            <h3
+              style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }}
+              className="text-center text-muted"
+            >
+              Add Videos
+            </h3>
+          </a>
+        </div>
+        <div className="p-3">
           <a style={{ textDecoration: "none" }} href="/edit-about">
-            <h3 style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }} className="text-center text-muted">
+            <h3
+              style={{ fontFamily: "Limo", fontSize: 20, color: "blue" }}
+              className="text-center text-muted"
+            >
               Edit About
             </h3>
           </a>
@@ -52,7 +86,7 @@ const AdminEdit = () => {
 
       <hr />
     </Page>
-  )
-}
+  );
+};
 
-export default AdminEdit
+export default AdminEdit;
