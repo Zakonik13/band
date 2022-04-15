@@ -7,11 +7,16 @@ import { REMOVE_NEWS } from "../utils/mutations";
 import Auth from "../utils/Auth.js";
 import { Button } from "react-bootstrap";
 import AlertModal from "../components/AlertModal";
+import { ADD_SUBSCRIPTION } from "../utils/mutations";
 
 const News = () => {
   const { data, loading } = useQuery(GET_NEWS);
   const [removeNews] = useMutation(REMOVE_NEWS);
   const [modalShow, setModalShow] = useState(false);
+  const [addSubscription] = useMutation(ADD_SUBSCRIPTION);
+  const [email, setEmail] = useState({
+    email: ""
+  });
 
   if (loading) {
     return "";
@@ -20,13 +25,28 @@ const News = () => {
   let alertDetails = {
     title: "Subscribe to our Newsletter !",
     add: false,
-    email: true,
     submit: true,
+    email: true,
     noThanks: true
   };
 
   const handleModal = () => {
     setModalShow(true);
+  };
+
+  const handleAddSubscription = async () => {
+    console.log(typeof email);
+    try {
+      await addSubscription({
+        variables: {
+          email: email.email
+        }
+      });
+      console.log(typeof email);
+      setModalShow(false);
+    } catch (e) {
+      alert("You must provide a valid email address.");
+    }
   };
 
   const handleRemove = async id => {
@@ -54,14 +74,15 @@ const News = () => {
         setModalShow={setModalShow}
         onHide={() => setModalShow(false)}
         alertDetails={alertDetails}
+        email={email}
+        setEmail={setEmail}
+        handleAddSubscription={handleAddSubscription}
       />
-      {!Auth.loggedIn() && (
-        <div style={{ display: "flex", justifyContent: "end" }}>
-          <Button onClick={handleModal} variant="outline-secondary" size="sm">
-            Subscribe to Newsletter
-          </Button>
-        </div>
-      )}
+      <div style={{ display: "flex", justifyContent: "end" }}>
+        <Button onClick={handleModal} variant="outline-secondary" size="sm">
+          Subscribe to Newsletter
+        </Button>
+      </div>
       {data.news.map(item => {
         return (
           <center key={item._id} className="p-4">

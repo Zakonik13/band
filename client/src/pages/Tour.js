@@ -12,8 +12,6 @@ import AlertModal from "../components/AlertModal";
 const Tour = () => {
   const { data, loading } = useQuery(GET_TOUR_DATE);
   const [removeTourDate] = useMutation(REMOVE_TOUR_DATE);
-  // const [state, dispatch] = useStoreContext()
-  // const { tours } = state
   const [modalShow, setModalShow] = useState(false);
 
   if (loading) {
@@ -22,48 +20,15 @@ const Tour = () => {
 
   let alertDetails = {
     title: "This tour date is sold out!",
-    ok: true,
+    ok: true
   };
 
-  const handleRemove = async (id) => {
+  const handleRemove = async id => {
     await removeTourDate({
       variables: { id },
-      refetchQueries: [{ query: GET_TOUR_DATE }],
+      refetchQueries: [{ query: GET_TOUR_DATE }]
     });
   };
-
-  // const tourData = [
-  //   {
-  //     Month: "January",
-  //     Date: "January 1st",
-  //     Location: "Lexington, Ky"
-  //   },
-  //   {
-  //     Month: "January",
-  //     Date: "January 7th",
-  //     Location: "Louisville, Ky"
-  //   },
-  //   {
-  //     Month: "January",
-  //     Date: "January 14th",
-  //     Location: "Nashville, Tn"
-  //   }
-  // ]
-
-  // const handleAlert = () => {
-  //   setModalShow(true)
-  // }
-
-  // useEffect(() => {
-  //   //if data exist or has changed from the response of useQuery (not currently used), then run dispatch()
-  //   if (tourData) {
-  //     // execute our dispatch function with our action object indicating the type of action and the data to set our state for tours to
-  //     dispatch({
-  //       type: UPDATE_TOUR,
-  //       tours: tourData
-  //     })
-  //   }
-  // }, [dispatch])
 
   return (
     <Page title={"Tour"}>
@@ -72,7 +37,7 @@ const Tour = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo",
+          fontFamily: "Limo"
         }}
       >
         <div>Tour</div>
@@ -84,7 +49,7 @@ const Tour = () => {
       </div>
       <hr />
 
-      {data.tour.map((item) => {
+      {data.tour.map(item => {
         return (
           <center key={item._id}>
             <div style={{ padding: "20px" }}>

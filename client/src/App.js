@@ -23,7 +23,8 @@ import MerchDetails from "./pages/MerchDetails";
 import MusicDetails from "./pages/MusicDetails";
 import AddMerch from "./pages/AddMerch";
 import AddNews from "./pages/AddNews";
-import AddImage from "./pages/AddImage";
+import AddRemoveImage from "./pages/AddRemoveImage";
+import AddVideo from "./pages/AddVideo";
 import AdminEdit from "./pages/AdminEdit";
 import AddTourDate from "./pages/AddTourDate";
 import EditAbout from "./pages/EditAbout";
@@ -51,7 +52,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/news" element={<News />} />
             <Route path="/add-news" element={<AddNews />} />
-            <Route path="/add-image" element={<AddImage />} />
+            <Route path="/add-remove-image" element={<AddRemoveImage />} />
+            <Route path="/add-video" element={<AddVideo />} />
             <Route path="/about" element={<About />} />
             <Route path="/edit-about" element={<EditAbout />} />
             <Route path="/merch" element={<Merch />} />
