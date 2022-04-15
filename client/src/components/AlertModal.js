@@ -9,7 +9,9 @@ import emailjs from "@emailjs/browser";
 function AlertModal({ alertDetails, setModalShow, show, onHide }) {
   const [addSubscription] = useMutation(ADD_SUBSCRIPTION);
   const [state, setState] = useState({
+    name: "",
     email: "",
+    message: "Thank you for signing up to our newsletter!",
   });
 
   const handleChange = (event) => {
@@ -21,23 +23,28 @@ function AlertModal({ alertDetails, setModalShow, show, onHide }) {
   };
 
   const handleAddSubscription = async () => {
-    emailjs.init("");
-
     try {
       await addSubscription({
         variables: {
+          name: state.name,
           email: state.email,
+          message: state.message,
         },
       });
       await emailjs
-        .send("service_hsdqjea", "template_iic2uof", state.email)
+        .send(
+          "service_rhwnuvu",
+          "template_iic2uof",
+          { name: state.name, email: state.email, message: state.message },
+          "user_VX87bNMDuxlz9E5XfnclG"
+        )
         .then(
-          function (response) {
-            console.log("SUCCESS!", respsonse.status, response);
+          ((result) => {
+            console.log(result.text);
           },
-          function (error) {
-            console.log("FAILED", error);
-          }
+          (error) => {
+            console.log(error.text);
+          })
         );
       setModalShow(false);
     } catch (e) {
@@ -83,6 +90,12 @@ function AlertModal({ alertDetails, setModalShow, show, onHide }) {
 
         {alertDetails.email ? (
           <Form.Group className="mb-4">
+            <Form.Control
+              placeholder="Enter name..."
+              name="name"
+              onChange={handleChange}
+            />
+            <br />
             <Form.Control
               placeholder="Enter email address..."
               name="email"

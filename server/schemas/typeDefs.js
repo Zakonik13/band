@@ -45,6 +45,7 @@ const typeDefs = gql`
 
   type Subscription {
     _id: ID!
+    name: String!
     email: String!
   }
 
@@ -82,7 +83,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addAbout(body: String!): About
     addNews(date: String!, title: String!, body: String!): News
-    addSubscription(email: String!): Subscription
+    addSubscription(name: String!, email: String!): Subscription
     removeNews(_id: ID!): News
     addMusic(title: String!, source: String!): Music
     addMerch(

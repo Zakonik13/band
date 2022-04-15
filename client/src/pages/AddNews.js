@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Page from "../components/Page";
 import { Form, Button, Container } from "react-bootstrap";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { ADD_NEWS } from "../utils/mutations";
+import { GET_SUBSCRIPTIONS } from "../utils/queries";
+import emailjs from "@emailjs/browser";
 //Components
 import BackButton from "../components/BackButton";
 import AlertModal from "../components/AlertModal";
@@ -10,31 +12,55 @@ import AlertModal from "../components/AlertModal";
 const AddNews = () => {
   const [addNews] = useMutation(ADD_NEWS);
   const [modalShow, setModalShow] = useState(false);
+  const { data, loading } = useQuery(GET_SUBSCRIPTIONS);
+
+  if (!loading) {
+    console.log(data);
+  }
 
   let alertDetails = {
     title: "Do you want to add more news?",
     back: "/news",
-    add: true
+    add: true,
   };
 
   const [state, setState] = useState({
     date: "",
     title: "",
-    body: ""
+    body: "",
+  });
+
+  const [emailData, setEmailData] = useState({
+    message: "Here's an update from our Newsletter!",
   });
 
   const handleAddNews = async () => {
     await addNews({
-      variables: { date: state.date, title: state.title, body: state.body }
+      variables: { date: state.date, title: state.title, body: state.body },
     });
+    // await emailjs
+    //     .send(
+    //       "service_rhwnuvu",
+    //       "template_iic2uof",
+    //       { name: "", email: "", message: emailData.message },
+    //       "user_VX87bNMDuxlz9E5XfnclG"
+    //     )
+    //     .then(
+    //       ((result) => {
+    //         console.log(result.text);
+    //       },
+    //       (error) => {
+    //         console.log(error.text);
+    //       })
+    //     );
     setModalShow(true);
   };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setState({
       ...state,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -47,7 +73,7 @@ const AddNews = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          fontFamily: "Limo"
+          fontFamily: "Limo",
         }}
       >
         Add News
@@ -64,7 +90,7 @@ const AddNews = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          paddingTop: "30px"
+          paddingTop: "30px",
         }}
       >
         <div>
@@ -108,7 +134,7 @@ const AddNews = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          paddingTop: "20px"
+          paddingTop: "20px",
         }}
       >
         <Button

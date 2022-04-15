@@ -77,3 +77,13 @@ export const GET_MERCH_BY_ID = gql`
     }
   }
 `;
+
+export const GET_SUBSCRIPTIONS = gql`
+  query Subscription {
+    subscription {
+      _id
+      name
+      email
+    }
+  }
+`;
