@@ -30,16 +30,16 @@ import AddTourDate from "./pages/AddTourDate";
 import EditAbout from "./pages/EditAbout";
 
 const client = new ApolloClient({
-  request: operation => {
+  request: (operation) => {
     const token = localStorage.getItem("id_token");
 
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : ""
-      }
+        authorization: token ? `Bearer ${token}` : "",
+      },
     });
   },
-  uri: "/graphql"
+  uri: "/graphql",
 });
 
 function App() {

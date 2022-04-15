@@ -8,15 +8,15 @@ function AlertModal({
   setModalShow,
   show,
   onHide,
-  email,
-  setEmail,
-  handleAddSubscription
+  emailData,
+  setEmailData,
+  handleAddSubscription,
 }) {
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    setEmail({
-      ...email,
-      [name]: value
+    setEmailData({
+      ...emailData,
+      [name]: value,
     });
   };
 
@@ -35,7 +35,7 @@ function AlertModal({
                 display: "flex",
                 justifyContent: "center",
                 fontFamily: "Limo",
-                fontSize: "40px"
+                fontSize: "40px",
               }}
             >
               {alertDetails.title}
@@ -49,7 +49,7 @@ function AlertModal({
             style={{
               display: "flex",
               justifyContent: "center",
-              fontFamily: "Limo"
+              fontFamily: "Limo",
             }}
           >
             {alertDetails.title}
@@ -58,6 +58,12 @@ function AlertModal({
 
         {alertDetails.email ? (
           <Form.Group className="mb-4">
+            <Form.Control
+              placeholder="Enter name..."
+              name="name"
+              onChange={handleChange}
+            />
+            <br />
             <Form.Control
               placeholder="Enter email address..."
               name="email"

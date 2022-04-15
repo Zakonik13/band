@@ -8,18 +8,21 @@ import Auth from "../utils/Auth.js";
 import { Button } from "react-bootstrap";
 import AlertModal from "../components/AlertModal";
 import { ADD_SUBSCRIPTION } from "../utils/mutations";
+import emailjs from "@emailjs/browser";
 
 const News = () => {
   const { data, loading } = useQuery(GET_NEWS);
   const [removeNews] = useMutation(REMOVE_NEWS);
   const [modalShow, setModalShow] = useState(false);
   const [addSubscription] = useMutation(ADD_SUBSCRIPTION);
-  const [email, setEmail] = useState({
-    email: ""
+  const [emailData, setEmailData] = useState({
+    name: "",
+    email: "",
+    message: "Thanks for signing up to our Newsletter!",
   });
 
   if (loading) {
-    return "";
+    return "Loading...";
   }
 
   let alertDetails = {
@@ -27,7 +30,7 @@ const News = () => {
     add: false,
     submit: true,
     email: true,
-    noThanks: true
+    noThanks: true,
   };
 
   const handleModal = () => {
@@ -35,24 +38,42 @@ const News = () => {
   };
 
   const handleAddSubscription = async () => {
-    console.log(typeof email);
     try {
       await addSubscription({
         variables: {
-          email: email.email
-        }
+          name: emailData.name,
+          email: emailData.email,
+        },
       });
-      console.log(typeof email);
+      await emailjs
+        .send(
+          "service_rhwnuvu",
+          "template_iic2uof",
+          {
+            name: emailData.name,
+            email: emailData.email,
+            message: emailData.message,
+          },
+          "user_VX87bNMDuxlz9E5XfnclG"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
       setModalShow(false);
     } catch (e) {
       alert("You must provide a valid email address.");
     }
   };
 
-  const handleRemove = async id => {
+  const handleRemove = async (id) => {
     await removeNews({
       variables: { id },
-      refetchQueries: [{ query: GET_NEWS }]
+      refetchQueries: [{ query: GET_NEWS }],
     });
   };
 
@@ -63,7 +84,7 @@ const News = () => {
           display: "flex",
           justifyContent: "center",
           fontSize: 35,
-          fontFamily: "Limo"
+          fontFamily: "Limo",
         }}
       >
         <div>News</div>
@@ -74,8 +95,8 @@ const News = () => {
         setModalShow={setModalShow}
         onHide={() => setModalShow(false)}
         alertDetails={alertDetails}
-        email={email}
-        setEmail={setEmail}
+        emailData={emailData}
+        setEmailData={setEmailData}
         handleAddSubscription={handleAddSubscription}
       />
       <div style={{ display: "flex", justifyContent: "end" }}>
@@ -83,7 +104,7 @@ const News = () => {
           Subscribe to Newsletter
         </Button>
       </div>
-      {data.news.map(item => {
+      {data.news.map((item) => {
         return (
           <center key={item._id} className="p-4">
             <h3 style={{ fontFamily: "Arial" }}>{item.title}</h3>

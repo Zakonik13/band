@@ -32,9 +32,10 @@ export const ADD_MUSIC = gql`
 `;
 
 export const ADD_SUBSCRIPTION = gql`
-  mutation AddSubscription($email: String!) {
-    addSubscription(email: $email) {
+  mutation AddSubscription($name: String!, $email: String!) {
+    addSubscription(name: $name, email: $email) {
       _id
+      name
       email
     }
   }

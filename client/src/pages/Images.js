@@ -11,7 +11,7 @@ import { useQuery } from "@apollo/react-hooks";
 const Images = () => {
   const { data, loading } = useQuery(GET_IMAGES);
 
-  const images = data?.images.map(image => {
+  const images = data?.images.map((image) => {
     return { original: image.link, thumbnail: image.link };
   });
 
@@ -30,7 +30,7 @@ const Images = () => {
             justifyContent: "center",
             fontSize: 35,
             fontFamily: "Limo",
-            paddingTop: "20px"
+            paddingTop: "20px",
           }}
         >
           Images
