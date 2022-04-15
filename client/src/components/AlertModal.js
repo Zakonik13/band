@@ -8,14 +8,14 @@ function AlertModal({
   setModalShow,
   show,
   onHide,
-  email,
-  setEmail,
+  emailData,
+  setEmailData,
   handleAddSubscription,
 }) {
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setEmail({
-      ...email,
+    setEmailData({
+      ...emailData,
       [name]: value,
     });
   };

@@ -14,10 +14,6 @@ const AddNews = () => {
   const [modalShow, setModalShow] = useState(false);
   const { data, loading } = useQuery(GET_SUBSCRIPTIONS);
 
-  if (!loading) {
-    console.log(data);
-  }
-
   let alertDetails = {
     title: "Do you want to add more news?",
     back: "/news",
@@ -30,29 +26,43 @@ const AddNews = () => {
     body: "",
   });
 
-  const [emailData, setEmailData] = useState({
-    message: "Here's an update from our Newsletter!",
-  });
+  const message = "Here's an update from our Newsletter!";
+
+  if (loading) {
+    return "Loading...";
+  }
+
+  console.log(data.subscription);
 
   const handleAddNews = async () => {
     await addNews({
       variables: { date: state.date, title: state.title, body: state.body },
     });
-    // await emailjs
-    //     .send(
-    //       "service_rhwnuvu",
-    //       "template_iic2uof",
-    //       { name: "", email: "", message: emailData.message },
-    //       "user_VX87bNMDuxlz9E5XfnclG"
-    //     )
-    //     .then(
-    //       ((result) => {
-    //         console.log(result.text);
-    //       },
-    //       (error) => {
-    //         console.log(error.text);
-    //       })
-    //     );
+
+    await data.subscription.map((sub) => {
+      emailjs
+        .send(
+          "service_rhwnuvu",
+          "template_iic2uof",
+          {
+            name: sub.name,
+            email: sub.email,
+            message: message,
+            title: state.title,
+            body: state.body,
+          },
+          "user_VX87bNMDuxlz9E5XfnclG"
+        )
+        .then(
+          ((result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          })
+        );
+    });
+
     setModalShow(true);
   };
 
